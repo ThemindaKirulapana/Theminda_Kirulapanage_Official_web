@@ -36,6 +36,7 @@ img{
   display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 60px;
 }
 
 .logo {
@@ -65,13 +66,16 @@ img{
   animation-delay: calc(0.2s * var(--i));
   padding: 0px;
   margin: 0 10px;
+
 }
 
 .navbar a:hover{
   color: #0ef;
+  height: 50px;
 }
 .navbar a:active{
     color: #0ef;
+    
   }
 
 .home {
