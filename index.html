@@ -1,282 +1,552 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE-edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Renuka Theminda</title>
-    <link rel="stylesheet" href="stylesheet.css">
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Renuka Theminda- Portfolio</title>
+  <link rel="stylesheet" href="Portfolio_styles.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet"> 
 </head>
 <body>
-    
-    <header class="header">
-        <a href="#"  style="font-family:cursive; font-weight: bold;color: #f0f2ab;font-style: normal;font-size: x-large;" >RENUKA</a>
-        <div class="container">
-            <nav class="navbar">
-               
-                <a href="#about" style="--i:2" >About</a>
-                
-                <a href="#skills" style="--i:4" >Skill</a>
-                <a href="#contact" style="--i:5" >Contact</a>
-            </nav>
+  <nav class="nav-bar">
+    <div class="nav-container">
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#education">Education</a>
+            <a href="#skills">Skills</a>
+            <a href="#projects">Projects</a>
+            <a href="#certificates">Certificates</a>
+            <a href="#contact">Contact</a>
         </div>
-       
-    </header>
-    <section class="home">
-        <div class="home-content">
-            <h3>Hello, I am</h3>
-            <h1>Theminda Kirulapana</h1>
-            <h3>And I'm a <span class="text"></span></h3>
-            <p>I'm a web Developer and undergraduate of NIBM Sri Lanka.
-               
-            <div class="home-sci">
-                <a href="https://www.facebook.com/renuka.kirulapana" style="--i:7" ><i class='bx bxl-facebook'></i></a>
-                <a href="https://www.instagram.com/___t.h.e.m.i___/" style="--i:8" ><i class='bx bxl-instagram'></i></a>
-                
+        <div class="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</nav>
+
+<section id = "home" class="hero">
+  <div class="container">
+      <div class="hero-content">
+          <div class="hero-text">
+              <h1>Hi, I'm Renuka Theminda</h1>
+              <div class="typing-text" id="typing-text"></div>
+              <p> As an undergraduate at NIBM, I am passionate about developing elegant and
+                efficient solutions to complex problems. My journey in software development
+                began during my academic studies and has evolved into a dynamic learning
+                experience. Through various projects, I have been able to apply and expand my
+                knowledge, continuously enhancing my skills</p>
+              <a href="https://drive.google.com/file/d/1ZyQ8zoZRL1dd_ey7toG3MCWnYHHgOT1O/view?usp=sharing" class="download-btn">Download Resume</a>
+          </div>
+          <div class="hero-image">
+              <img src="images/p1.png"  alt="themi">
+          </div>
+      </div>
+  </div>
+</section>
+
+
+<section id="experience" class="education">
+    <div class="container">
+        <h2>Experience</h2>
+        <div class="education-cards">
+            <!-- University Cards -->
+            <div class="edu-card university-card">
+                <div class="edu-card-header">
+                    <i class="fas fa-university"></i>
+                    <h3>Ministry of Health Sri Lanka</h3>
+                </div>
+                <div class="edu-card-body">
+                    <div class="edu-program">
+                        <span class="program-value">Intern Software Engineer</span>
+                       
+                    </div>
+                    <div class="edu-status">
+                        <div class="status-bar">
+                            <div class="status-progress"></div>
+                        </div>
+                        <span class="status-text">(2024 Jan -2024 Sep)</span>
+                    </div>
+                </div>
             </div>
-            <a href="assets/renukacv2.pdf" download="renukacv2.pdf" download class="btn-box">Download CV</a>
+
+            
+
+            
         </div>
-        <span class="home-imgHover"></span>
-        <div class="home-img">
-            <img src="assets/p1.png" alt="Profile Image">
+    </div>
+</section>
+
+
+<section id="education" class="education">
+    <div class="container">
+        <h2>Education</h2>
+        <div class="education-cards">
+            <!-- University Cards -->
+            <div class="edu-card university-card">
+                <div class="edu-card-header">
+                    <i class="fas fa-university"></i>
+                    <h3>NIBM City University</h3>
+                </div>
+                <div class="edu-card-body">
+                    <div class="edu-program">
+                        
+                        <span class="program-value">Higher National Diploma in Software Engineering</span>
+                    </div>
+                    <div class="edu-status">
+                        <div class="status-bar">
+                            <div class="status-progress"></div>
+                        </div>
+                        <span class="status-text">Completed</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="edu-card university-card">
+                <div class="edu-card-header">
+                    <i class="fas fa-university"></i>
+                    <h3>NIBM City University</h3>
+                </div>
+                <div class="edu-card-body">
+                    <div class="edu-program">
+                        <span class="program-value"> National Diploma in Software Engineering</span>
+                        
+                    </div>
+                    <div class="edu-status">
+                        <div class="status-bar">
+                            <div class="status-progress"></div>
+                        </div>
+                        <span class="status-text">Completed</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- High School Card -->
+            <div class="edu-card school-card">
+                <div class="edu-card-header">
+                    <i class="fas fa-school"></i>
+                    <h3>ST/Aloysius College-Galle</h3>
+                  
+           
+                    <img src="images/th.jpg" style="height: auto; width: 100px; margin-left: 650px;" alt="ST/Aloysius College-Galle" class="school-image">
+               </div>
+                <div class="edu-card-body">
+                    <div class="exam-results">
+                        <div class="exam-item">
+                            <div class="exam-icon">
+                                <i class="fas fa-award"></i>
+                            </div>
+                            <div class="exam-details">
+                                <h4>G.C.E Advanced Level</h4>
+                                <p>Commerce Stream</p>
+                                <p><span class="highlight">2019 A/L</span> </p>
+                            </div>
+                        </div>
+                        <div class="exam-item">
+                            <div class="exam-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="exam-details">
+                                <h4>G.C.E Ordinary Level</h4>
+                                <p><span class="highlight"> 2016 O/L</span> </p>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
+
+<section id="skills" class="skills">
+    <div class="container">
+        <h2>SKILLS</h2>
+        <div class="skills-grid">
+            <div class="skill-item">
+                <i class="fab fa-html5"></i>
+                <h3>HTML</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-css3-alt"></i>
+                <h3>CSS</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-js"></i>
+                <h3>JavaScript</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-react"></i>
+                <h3>React</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-node"></i>
+                <h3>Node.js</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-python"></i>
+                <h3>Python</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-java"></i>
+                <h3>Java</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fab fa-php"></i>
+                <h3>PHP</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-database"></i>
+                <h3>SQL</h3>
+            </div>
+            <div class="skill-item">
+                <i class="fas fa-code"></i>
+                <h3>Coding</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="projects" class="projects">
+    <div class="container">
+        <h2>PROJECTS</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <img src="images/i8.png" alt="Sri Foundation" class="project-image">
+                <div class="project-info">
+                    <h3>Vehicle Management Information System</h3>
+                    <p>This my internship project which I developed.  Java , JSF , MySql , xhtml are used this project. </p>
+                    <div class="project-tags">
+                        <span class="project-tag">Java</span>
+                        <span class="project-tag">JSF</span>
+                        <span class="project-tag">xhtml</span>
+                        <span class="project-tag">MySQL</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="images/q1.png" alt="Trustify" class="project-image">
+                <div class="project-info">
+                    <h3>Digital Identity Verification System for Baby Clinic</h3>
+                    <p>Trustify is a secure and decentralized digital identity verification platform designed to enhance trust, privacy, and efficiency in identity management. Leveraging blockchain technology, the system ensures tamper-proof identity verification.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">PHP</span>
+                        <span class="project-tag">html</span>
+                        <span class="project-tag">css</span>
+                        <span class="project-tag">boostrap</span>
+                        <span class="project-tag">MySQL</span>
+                        
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="images/q5.png" alt="Portfolio" class="project-image">
+                <div class="project-info">
+                    <h3>Chat Wave Message Applclication</h3>
+                    <p>Designed and developed a responsive personal portfolio website using HTML, CSS, and JavaScript. The project features a clean, modern UI with interactive elements including a typing animation effect, hover states, and smooth scrolling navigation.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">MySQL</span>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="/images/q10.JPG" alt="Velvet Aura" class="project-image">
+                <div class="project-info">
+                    <h3>RTK :Bike Sale POS </h3>
+                    <p>Developed a Java-based POS system that streamlines seat reservations and tracking. The application features a user-friendly menu interface for booking, canceling, and searching seats, implemented with arrays.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">Java</span>
+                        <span class="project-tag">MySQL</span>
+                        <span class="project-tag">Java Swing</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="/img/project1.png" alt="SDG 6" class="project-image">
+                <div class="project-info">
+                    <h3>SDG 6: Clean Water and Sanitation Website</h3>
+                    <p>As part of a group project, our team collaborated to design and develop a website focused on the United Nations Sustainable Development Goal 6. My contributions included User Profile Page, Team Page, Content Page, and Editor's Page.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">HTML</span>
+                        <span class="project-tag">CSS</span>
+                        <span class="project-tag">JavaScript</span>
+                        <span class="project-tag">Web Design</span>
+                        <span class="project-tag">SDGs</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="project-card">
+                <img src="/img/project3.png" alt="Plane Management" class="project-image">
+                <div class="project-info">
+                    <h3>NIBM Management System in Java</h3>
+                    <p>Developed a Java-based private plane management system that streamlines seat reservations and tracking. The application features a user-friendly menu interface for booking, canceling, and searching seats, implemented with arrays.</p>
+                    <div class="project-tags">
+                        <span class="project-tag">Java</span>
+                        <span class="project-tag">OOP</span>
+                        
+                    </div>
+                </div>
+            </div>
+            
+           
+            
+        </div>
+    </div>
+</section>
+
+<section id="certificates" class="certificates">
+    <div class="container">
+        <h2>PROFESSIONAL CERTIFICATES</h2>
+        <p class="section-intro">Continuous learning is my passion. Here are some of my notable achievements and certifications that showcase my dedication to professional growth.</p>
+
+        <div class="certificates-grid" >
+            <!--certificate card 1-->
+            <div class="certificate-card">
+                <div class="certificate-img">
+                    <img src="/img/certifi1.png" alt="alt for certificate 1">
+                    <div class="certificate-overlay">
+                        <a href="/img/Web_Design_for_Beginners_E-Certificate.pdf" class="view-btn">View certificate</a>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Web Development</h3>
+                    <p class="issuer">University of Moratuwa</p>
+                    <p class="date">Issued: Sep 2024</p>
+                    
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-img">
+                    <img src="/img/pythoncertifi.png" alt="alt for certificate 1"  >
+                    <div class="certificate-overlay">
+                        <a href="img/Python_for_Beginners_E-Certificate.pdf" class="view-btn">View certificate</a>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Python for Beginners</h3>
+                    <p class="issuer">University of Moratuwa</p>
+                    <p class="date">Issued: May 2024</p>
+                    
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-img">
+                    <img src="/img/fullstackcertifi.png" alt="alt for certificate 1">
+                    <div class="certificate-overlay">
+                        <a href="img/CertificateOfCompletion_Building FullStack Apps with React and Spring.pdf" class="view-btn">View certificate</a>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Building FullStack Apps with React and Spring</h3>
+                    <p class="issuer">Linkedin</p>
+                    <p class="date">Issued: December 2024</p>
+                    
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-img">
+                    <img src="/img/OOP_Certifi.png" alt="alt for certificate 1">
+                    <div class="certificate-overlay">
+                        <a href="img/CertificateOfCompletion_Java ObjectOriented Programming.pdf" class="view-btn">View certificate</a>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Java Object-Oriented Programming</h3>
+                    <p class="issuer">LinkedIn</p>
+                    <p class="date">Issued: November 2024</p>
+                    
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-img">
+                    <img src="/img/React_certifi.png" alt="alt for certificate 1">
+                    <div class="certificate-overlay">
+                        <a href="img/CertificateOfCompletion_React Essential Training.pdf" class="view-btn">View certificate</a>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <h3>React Essential Training</h3>
+                    <p class="issuer">LinkedIn</p>
+                    <p class="date">Issued: December 2024</p>
+                    
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-img">
+                    <img src="/img/20Web_Certifi.png" alt="alt for certificate 1">
+                    <div class="certificate-overlay">
+                        <a href="img/udemyHtml.pdf" class="view-btn">View certificate</a>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <h3>20 Web Projects build 20 HTML, CSS and JavaScript Projects</h3>
+                    <p class="issuer">Udemy</p>
+                    <p class="date">Issued: June 2024</p>
+                    
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-img">
+                    <img src="/img/SQL_certifi.png" alt="alt for certificate 1">
+                    <div class="certificate-overlay">
+                        <a href="img/CertificateOfCompletion_Learning SQL Programming.pdf" class="view-btn">View certificate</a>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Learning SQL Programming</h3>
+                    <p class="issuer">Linkedin</p>
+                    <p class="date">Issued: June 2024</p>
+                    
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-img">
+                    <img src="/img/angular_certifi.png" alt="alt for certificate 1">
+                    <div class="certificate-overlay">
+                        <a href="img/CertificateOfCompletion_Angular Essential Training.pdf" class="view-btn">View certificate</a>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Angular Essential Training</h3>
+                    <p class="issuer">Linkedin</p>
+                    <p class="date">Issued: Oct 2024</p>
+                    
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-img">
+                    <img src="/img/ai_certifi.png" alt="alt for certificate 1">
+                    <div class="certificate-overlay">
+                        <a href="img/CertificateOfCompletion_Introduction to Prompt Engineering for Generative AI.pdf" class="view-btn">View certificate</a>
+                    </div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Introduction to Prompt Engineering for Generative AI</h3>
+                    <p class="issuer">Linkedin</p>
+                    <p class="date">Issued: June 2024</p>
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+<section id="contact" class="contact">
+    <div class="container">
+      <h2>CONTACT ME</h2>
+      <p class="section-intro">I'd love to hear from you! Feel free to reach out with questions, opportunities, or just to say hello.</p>
+      
+      <div class="contact-container">
+        <div class="contact-card">
+          <div class="contact-image">
+            <img src="/images/p3.png" alt="Contact Image">
+            <div class="image-overlay">
+              <div class="contact-info">
+                <div class="info-item">
+                  <i class="fas fa-envelope"></i>
+                  <span>renuka.kirulapana@gmail.com</span>
+                </div>
+                
+                <div class="info-item">
+                  <i class="fas fa-map-marker-alt"></i>
+                  <span>Galle, Sri Lanka</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
         
-    <section class="about" id="about">
-        <div class="about-img">
-            <img src="assets/p3.png" alt="About Image">
-        </div>
-        <div class="about-text">
-            <h2>About<span>Me</span></h2>
-            <h4>Full Stack Developer</h4>
-            <p>As a 24-year-old Software Engineering undergraduate at NIBM Sri Lanka,I have sucsessfully Completed Diploma in Computer system design programme at NIBM. I'm a quick learner driven by a passion for web development.I'm intersted in Java Spring Framework.</p>
-
-            <a href="#skills" class="btn-box">More About Me</a>
-        </div>
-    </section>
-    <script src="main.js"></script>
-
-    <section>
-        <div class="services" id="services">
-            <div class="container">
-                <h1 class="sub-title">My <span>services</span></h1>
-                <div class="services-list">
-                    <div>
-                        <i class='bx bx-code' style='color:#00eeff'  ></i>
-                        <h2>Web Development</h2>
-                        <p>Specializing in HTML, CSS, and JavaScript, I create responsive and dynamic web interfaces.</p>
-                            <a href="https://github.com/ThemindaKirulapana" class="read">Learn More</a>
-                    </div>
-                    <div>
-                        <i class='bx bxl-java' style='color:#00eeff'  ></i>
-                        <h2>Java Application Development</h2>
-                        <p>I have knowledge about java spring frame work and java server faces frame work</p>
-                            <a href="https://github.com/ThemindaKirulapana" class="read">Learn More</a>
-                    </div>
-                    <div>
-                        <i class='bx bxl-apple' style='color:#00eeff' ></i>
-                        <h2>Mobile Application Development</h2>
-                        <p>I have knowledge about Android mobile application development with java</p>
-                            <a href="https://github.com/ThemindaKirulapana" class="read">Learn More</a>
-                    </div>
-                </div>
+        <div class="form-card">
+          <form id="contact-form" action="https://formspree.io/f/mldgwgjo" method="POST">
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="name" placeholder="Your Name" required>
+              <span class="focus-border"></span>
             </div>
-        </div>
-    </section>
-    <h1 class="sub-title">My <span>Skills</span></h1>
-
-    <section id="skills">
-        <div class="container1">
-            <h1 class="heading1">Technical Skills</h1>
-            <div class="Technical-bars">
-                <div class="bar"><i style="color: #c95d2e" class='bx bxl-html5'></i>
-                    <div class="info">
-                        <span>HTML</span>
-                    </div>
-                    <div class="progress-line html">
-                        <span style="width: 90%;"></span> 
-                    </div>
-                </div>
-                <div class="bar"><i style="color: #147bbc" class='bx bxl-css3'></i>
-                    <div class="info">
-                        <span>CSS</span>
-                    </div>
-                    <div class="progress-line css">
-                        <span style="width: 70%;"></span> 
-                    </div>
-                </div>
-                <div class="bar"><i style="color: #b0bc1e" class='bx bxl-javascript'></i>
-                    <div class="info">
-                        <span>JavaScript</span>
-                    </div>
-                    <div class="progress-line javascript">
-                        <span style="width: 45%;"></span> 
-                    </div>
-                </div>
-                <div class="bar"><i style="color: #c32ec9" class='bx bxl-java'></i>
-                    <div class="info">
-                        <span>Java</span>
-                    </div>
-                    <div class="progress-line php">
-                        <span style="width: 50%;"></span> 
-                    </div>
-                </div>
-                <div class="bar"><i style="color: #69bcbc" class='bx bxl-react'></i>
-                    <div class="info">
-                        <span>React</span>
-                    </div>
-                    <div class="progress-line react">
-                        <span style="width: 30%;"></span> 
-                    </div>
-                </div>
-                <div class="bar"><i style="color: #69bcbc" class='bx bxl-angular'></i>
-                    <div class="info">
-                        <span>Angular</span>
-                    </div>
-                    <div class="progress-line react">
-                        <span style="width: 30%;"></span> 
-                    </div>
-                </div>
-                
+            
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="Your Email" required>
+              <span class="focus-border"></span>
             </div>
-        </div>
-    
-        <div class="container1">
-            <h1 class="heading1">Professional Skills</h1>
-            <div class="radial-bars">
-    
-                <div class="radial-bar">
-                    <svg x="0px" y="0px" viewBox="0 0 200 200">
-                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                        <circle class="path path-1" cx="100" cy="100" r="80"></circle>
-                    </svg>
-                    <div class="percentage">90%</div>
-                    <div class="text">Creativity</div>
-                </div>
-    
-                <div class="radial-bar">
-                    <svg x="0px" y="0px" viewBox="0 0 200 200">
-                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                        <circle class="path path-2" cx="100" cy="100" r="80"></circle>
-                    </svg>
-                    <div class="percentage">80%</div>
-                    <div class="text">Communication</div>
-                </div>
-    
-                <div class="radial-bar">
-                    <svg x="0px" y="0px" viewBox="0 0 200 200">
-                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                        <circle class="path path-3" cx="100" cy="100" r="80"></circle>
-                    </svg>
-                    <div class="percentage">75%</div>
-                    <div class="text">Problem Solving</div>
-                </div>
-    
-                <div class="radial-bar">
-                    <svg x="0px" y="0px" viewBox="0 0 200 200">
-                        <circle class="progress-bar" cx="100" cy="100" r="80"></circle>
-                        <circle class="path path-4" cx="100" cy="100" r="80"></circle>
-                    </svg>
-                    <div class="percentage">90%</div>
-                    <div class="text">Team Work</div> 
-                </div>
-    
+            
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Your Message" rows="5" maxlength="1000" required></textarea>
+              <span class="focus-border"></span>
             </div>
-        </div>
-    </section>
-    
-<section>
-    <div id="portfolio" id="project">
-        <div class="main-text" id="project">
-            <h2>Latest <span>Project</span></h2>
-
-            <div class="portfolio-content">
-                <div class="row">
-                    <img src="assets/i8.png" alt="Project 1">
-                    <div class="layer">
-                        <h5>Vehicle Management Information System</h5>
-                        <p>This is my internship project of Ministry Of Health</p>
-
-                        <a href="https://github.com/lk-gov-health-hiu/vmis"><i class='bx bx-link-external' style="color: rgb(5, 21, 37);"></i></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <img src="assets/q1.png" alt="Project 2">
-                    <div class="layer">
-                        <h5 style="color: burlywood;">MOH Clinic Vaccination Information System</h5>
-                        <p style="color: burlywood;"></p>Designed a modern web user-interface for MOH Clinic Vaccination Information System</p>
-
-                        <a href="https://github.com/ThemindaKirulapana/MOH-1"><i class='bx bx-link-external' style="color: rgb(18, 17, 15);"></i></a>
-                    </div>
-                </div>
-                <div class="row">
-                    <img src="assets/q5.png" alt="Project 3">
-                    <div class="layer">
-                        <h5 style="color: rgb(247, 183, 244);"></h5>Chat Wave Applicaton</h5>
-                        <p style="color: rgb(255, 0, 242);">This is a chat application</p>
-
-                        <a href="https://github.com/ThemindaKirulapana/MESSAGE-APP-FLASK"><i class='bx bx-link-external' style="color: rgb(1, 1, 1);"></i></a>
-                    </div>
-                </div>
-                <!-- <div class="row">
-                    <img src="assets/q10.JPG" alt="Project 4">
-                    <div class="layer">
-                        <h5>Frontend Development</h5>
-                        <p>Designed a website for my business using HTML, CSS.</p>
-
-                        <a href="https://github.com/ThishmiGunawardhana/Thish_Dress_Website_Html_Css"><i class='bx bx-link-external' style="color: rgb(5, 21, 37);"></i></a>
-                    </div>
-                </div> -->
+  
+            <!-- Honeypot field to prevent spam -->
+            <input type="text" name="_gotcha" style="display:none">
+            <!-- Redirect after submission -->
+            <input type="hidden" name="_next" value="https://yourwebsite.com/thanks.html">
+  
+            <button type="submit" class="submit-btn">
+              <span>Send Message</span>
+              <i class="fas fa-paper-plane"></i>
+            </button>
+            
+            <div class="form-status">
+              <div class="success-message">
+                <i class="fas fa-check-circle"></i>
+                <p>Message sent successfully!</p>
+              </div>
+              <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                <p>Oops! Something went wrong.</p>
+              </div>
             </div>
+          </form>
         </div>
+      </div>
+      
+      <div class="social-links">
+        <a href="https://github.com/ThemindaKirulapana" class="social-link">
+          <i class="fab fa-github"></i>
+          <span class="tooltip">GitHub</span>
+        </a>
+        <a href="https://www.instagram.com/___t.h.e.m.i___/?hl=en" class="social-link">
+          <i class="fab fa-instagram"></i>
+          <span class="tooltip">Instagram</span>
+        </a>
+       
+        <a href="https://www.linkedin.com/in/theminda-kirulapana-bb8b141a7/" class="social-link">
+          <i class="fab fa-linkedin"></i>
+          <span class="tooltip">LinkedIn</span>
+        </a>
+      </div>
     </div>
-</section>
+  </section>
 
-<section class="contact" id="contact">
-    <div class="contact-text">
-        <h2>Contact <span>Me</span></h2>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-        <br/>
-            <div class="contact-list">
-                <li><i class='bx bxs-send'></i><a href="mailto:renuka.kirulapana@gmail.com">renuka.kirulapana@gmail.com</a></li>
-                <li><i class='bx bxs-phone'></i><a href="tel:+94704678802">0771370127</a></li>
-                <li><i class='bx bxs-map'></i>Galle Hikkaduwa </li>
-            </div>
-            <div class="contact-icons">
-                
-                <a href="https://github.com/ThemindaKirulapana"><i class='bx bxl-github'></i></a>
-                <a href="https://www.linkedin.com/in/theminda-kirulapana-bb8b141a7/"><i class='bx bxl-linkedin'></i></a>
-            </div>
-    </div>
+<footer>
+    <p>&copy; 2025 Renuka Theminda. All rights reserved.</p>
+</footer>
 
-    <div class="contact-form">
-        <form action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="5049699d-2976-4186-be1e-a9fd6ef33297">
-            <input type="text" name="name" placeholder="Enter Your Name" required>
-            <input type="email" name="email" placeholder="Enter Your Email" required>
-            <input type="text" name="subject" placeholder="Enter Your Subject">
-            <input type="text-area" name="textarea" placeholder="Enter Your Message"  rows="4" cols="50">
-            <!-- <textarea id="message" cols="40" rows="10" placeholder="Enter Your Message" required></textarea> -->
-             <br/>
-             <br/>
-            <input type="submit" value="Submit" class="send">
-        </form>
-    </div>
-    
-</section>
-<div class="last-text">
-    <p>Developed by Renuka Theminda @ 2024</p>
-</div>
-<a href="#" class="top"><i class='bx bx-up-arrow-alt'></i></a>
-
-
-<script src="main.js"></script>
+<script src="Portfolio.js"></script>
+   
 </body>
 </html>
