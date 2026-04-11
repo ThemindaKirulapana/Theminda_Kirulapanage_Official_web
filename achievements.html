@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements — Renuka Theminda</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    :root {
+      --bg: #060810;
+      --surface: #0d1120;
+      --surface2: #131828;
+      --border: rgba(255,255,255,0.07);
+      --text: #e8eaf0;
+      --muted: #6b7280;
+      --accent: #00e5ff;
+      --accent2: #7c3aed;
+      --accent3: #f59e0b;
+      --radius: 16px;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      min-height: 100vh;
+    }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* animated grid bg */
+    body::after {
+      content: '';
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      animation: gridMove 20s linear infinite;
+    }
+    @keyframes gridMove { from{background-position:0 0} to{background-position:60px 60px} }
+
+    /* blobs */
+    .blob {
+      position: fixed; border-radius: 50%;
+      filter: blur(90px); pointer-events: none; z-index: 0;
+    }
+    .blob-1 {
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(0,229,255,0.08), transparent 70%);
+      top: -150px; right: -100px;
+      animation: float 9s ease-in-out infinite;
+    }
+    .blob-2 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(124,58,237,0.07), transparent 70%);
+      bottom: 0; left: -100px;
+      animation: float 12s ease-in-out infinite reverse;
+    }
+    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-30px)} }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      padding: 18px 0;
+      background: rgba(6,8,16,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      display: flex; align-items: center; gap: 16px;
+    }
+    .back-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      color: var(--muted); text-decoration: none;
+      font-size: 13px; font-weight: 500;
+      padding: 7px 16px; border-radius: 50px;
+      border: 1px solid var(--border);
+      transition: all 0.3s;
+    }
+    .back-btn:hover { color: var(--accent); border-color: rgba(0,229,255,0.3); }
+    .nav-logo {
+      font-family: 'Syne', sans-serif; font-weight: 800;
+      font-size: 20px; color: var(--accent);
+      text-decoration: none; margin-right: auto;
+    }
+
+    /* HERO HEADER */
+    .page-header {
+      position: relative; z-index: 2;
+      padding: 140px 0 60px;
+      text-align: center;
+    }
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.2);
+      border-radius: 50px; padding: 6px 16px;
+      font-size: 12px; font-weight: 500;
+      color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+    .section-tag::before {
+      content: ''; width: 6px; height: 6px;
+      background: var(--accent); border-radius: 50%;
+      animation: blink 1.5s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+    .page-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(40px, 6vw, 68px);
+      font-weight: 800; letter-spacing: -2px; line-height: 1;
+      margin-bottom: 16px;
+    }
+    .page-title span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .page-sub { color: var(--muted); font-size: 17px; max-width: 500px; margin: 0 auto 48px; line-height: 1.7; }
+
+    /* FILTER TABS */
+    .filters {
+      display: flex; justify-content: center; gap: 8px;
+      flex-wrap: wrap; margin-bottom: 64px;
+      position: relative; z-index: 2;
+    }
+    .filter-btn {
+      padding: 8px 20px; border-radius: 50px;
+      border: 1px solid var(--border);
+      background: transparent; color: var(--muted);
+      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+      cursor: pointer; transition: all 0.3s;
+    }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--accent); color: #000; border-color: var(--accent);
+    }
+
+    /* GALLERY GRID */
+    .gallery-section {
+      max-width: 1200px; margin: 0 auto; padding: 0 32px 120px;
+      position: relative; z-index: 2;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    /* CARDS */
+    .achieve-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.4s, border-color 0.4s;
+      cursor: default;
+      opacity: 0; transform: translateY(30px);
+      animation: cardIn 0.6s forwards;
+    }
+    .achieve-card:hover {
+      transform: translateY(-10px) scale(1.01);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,229,255,0.12);
+      border-color: rgba(0,229,255,0.25);
+    }
+
+    /* card sizes for masonry feel */
+    .achieve-card.tall .card-visual { height: 260px; }
+    .achieve-card.wide { grid-column: span 2; }
+    .achieve-card.wide .card-visual { height: 200px; }
+
+    @keyframes cardIn {
+      to { opacity:1; transform:translateY(0); }
+    }
+    .achieve-card:nth-child(1) { animation-delay: 0.05s; }
+    .achieve-card:nth-child(2) { animation-delay: 0.12s; }
+    .achieve-card:nth-child(3) { animation-delay: 0.18s; }
+    .achieve-card:nth-child(4) { animation-delay: 0.24s; }
+    .achieve-card:nth-child(5) { animation-delay: 0.30s; }
+    .achieve-card:nth-child(6) { animation-delay: 0.36s; }
+    .achieve-card:nth-child(7) { animation-delay: 0.42s; }
+    .achieve-card:nth-child(8) { animation-delay: 0.48s; }
+
+    /* CARD VISUAL */
+    .card-visual {
+      height: 180px; position: relative; overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .card-visual-bg {
+      position: absolute; inset: 0;
+      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+    }
+    .achieve-card:hover .card-visual-bg { transform: scale(1.06); }
+
+    .card-visual-bg.cert  { background: linear-gradient(135deg, #0a1628, #0e2040); }
+    .card-visual-bg.edu   { background: linear-gradient(135deg, #100a28, #1a0f40); }
+    .card-visual-bg.work  { background: linear-gradient(135deg, #0a1e1a, #0d2e25); }
+    .card-visual-bg.skill { background: linear-gradient(135deg, #1a1008, #2a1c0d); }
+    .card-visual-bg.award { background: linear-gradient(135deg, #1a0a14, #280f1e); }
+
+    .card-icon-wrap {
+      position: relative; z-index: 1;
+      width: 72px; height: 72px; border-radius: 20px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 32px;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .achieve-card:hover .card-icon-wrap { transform: scale(1.15) rotate(-5deg); }
+
+    .card-icon-wrap.cert  { background: rgba(0,229,255,0.1);  color: var(--accent);  border: 1px solid rgba(0,229,255,0.2); }
+    .card-icon-wrap.edu   { background: rgba(124,58,237,0.1); color: #a78bfa;        border: 1px solid rgba(124,58,237,0.2); }
+    .card-icon-wrap.work  { background: rgba(16,185,129,0.1); color: #34d399;        border: 1px solid rgba(16,185,129,0.2); }
+    .card-icon-wrap.skill { background: rgba(245,158,11,0.1); color: var(--accent3); border: 1px solid rgba(245,158,11,0.2); }
+    .card-icon-wrap.award { background: rgba(236,72,153,0.1); color: #f472b6;        border: 1px solid rgba(236,72,153,0.2); }
+
+    /* corner badge */
+    .card-badge {
+      position: absolute; top: 14px; right: 14px;
+      font-size: 11px; padding: 4px 10px; border-radius: 50px;
+      font-weight: 500; letter-spacing: 0.5px; z-index: 2;
+    }
+    .badge-cert  { background: rgba(0,229,255,0.12);  color: var(--accent);  border: 1px solid rgba(0,229,255,0.2); }
+    .badge-edu   { background: rgba(124,58,237,0.12); color: #a78bfa;        border: 1px solid rgba(124,58,237,0.2); }
+    .badge-work  { background: rgba(16,185,129,0.12); color: #34d399;        border: 1px solid rgba(16,185,129,0.2); }
+    .badge-skill { background: rgba(245,158,11,0.12); color: var(--accent3); border: 1px solid rgba(245,158,11,0.2); }
+    .badge-award { background: rgba(236,72,153,0.12); color: #f472b6;        border: 1px solid rgba(236,72,153,0.2); }
+
+    /* shimmer line on hover */
+    .card-visual::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%);
+      transform: translateX(-100%);
+      transition: transform 0.6s;
+    }
+    .achieve-card:hover .card-visual::after { transform: translateX(100%); }
+
+    /* CARD BODY */
+    .card-body { padding: 22px 24px 24px; }
+    .card-body h3 {
+      font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700;
+      line-height: 1.35; margin-bottom: 8px;
+    }
+    .card-body p {
+      color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 16px;
+    }
+    .card-meta {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 8px;
+    }
+    .card-org {
+      font-size: 12px; color: var(--muted);
+      display: flex; align-items: center; gap: 6px;
+    }
+    .card-org i { font-size: 11px; }
+    .card-date {
+      font-size: 11px; padding: 3px 10px; border-radius: 50px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      color: var(--muted);
+    }
+    .card-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--accent); text-decoration: none;
+      font-weight: 500; margin-top: 14px;
+      transition: gap 0.3s;
+    }
+    .card-link:hover { gap: 10px; }
+
+    /* STATS BAR */
+    .stats-row {
+      display: grid; grid-template-columns: repeat(4, 1fr);
+      gap: 16px; margin-bottom: 56px;
+      position: relative; z-index: 2;
+      max-width: 1200px; margin: 0 auto 56px; padding: 0 32px;
+    }
+    .stat-box {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px 24px;
+      text-align: center; transition: all 0.3s;
+    }
+    .stat-box:hover { border-color: rgba(0,229,255,0.2); transform: translateY(-4px); }
+    .stat-num {
+      font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; letter-spacing: 0.5px; }
+
+    /* FOOTER */
+    .page-footer {
+      border-top: 1px solid var(--border);
+      padding: 32px; text-align: center;
+      color: var(--muted); font-size: 13px;
+      position: relative; z-index: 2;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .achieve-card.wide { grid-column: span 1; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 580px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .achieve-card.wide { grid-column: span 1; }
+      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .gallery-section { padding: 0 16px 80px; }
+      .stats-row { padding: 0 16px; }
+      .nav-inner { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo">RT.</a>
+    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+  </div>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <span class="section-tag">My Journey</span>
+  <h1 class="page-title">My <span>Achievements</span></h1>
+  <p class="page-sub">Certifications, education milestones, work experience, and skills earned along the way.</p>
+
+  <!-- FILTERS -->
+  <div class="filters">
+    <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+    <button class="filter-btn" onclick="filterCards('cert', this)">Certificates</button>
+    <button class="filter-btn" onclick="filterCards('edu', this)">Education</button>
+    <button class="filter-btn" onclick="filterCards('work', this)">Experience</button>
+    <button class="filter-btn" onclick="filterCards('skill', this)">Skills</button>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stat-box">
+    <div class="stat-num">5</div>
+    <div class="stat-label">Certificates</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">3</div>
+    <div class="stat-label">Qualifications</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">9mo</div>
+    <div class="stat-label">Work Experience</div>
+  </div>
+  <div class="stat-box">
+    <div class="stat-num">15+</div>
+    <div class="stat-label">Tech Skills</div>
+  </div>
+</div>
+
+<!-- GALLERY -->
+<div class="gallery-section">
+  <div class="gallery-grid" id="gallery">
+
+    <!-- Education 1 - wide -->
+    <div class="achieve-card wide"   data-cat="edu">
+      <div   style="height: 1000px; "  class="card-visual">
+        <div   class="card-visual-bg edu"></div>
+        <span class="card-badge badge-edu">Education</span>
+    
+        <!-- ADD THIS -->
+        <img src="images/awrd.jpeg" alt="NIBM Diploma Awards"
+          style="position:absolute; inset:0; width: 750px;; height: 1000px;;  object-fit:cover; object-position:center top; opacity:0.4; z-index:0;margin: center;">
+    
+        <div class="card-icon-wrap edu"><i class="fas fa-graduation-cap"></i></div>
+      </div>
+      <div class="card-body">
+        <h3>Higher National Diploma in Software Engineering</h3>
+        <p>Advanced diploma covering full-stack development, software architecture, databases, and agile methodologies at NIBM City University.</p>
+        <div class="card-meta">
+          <span class="card-org"><i class="fas fa-university"></i> NIBM City University</span>
+          <span class="card-date">Completed</span>
+        </div>
+      </div>
+    </div>
+    <!-- Work Experience -->
+    <div class="achieve-card tall" data-cat="work">
+      <div class="card-visual">
+        <div class="card-visual-bg work"></div>
+        <span class="card-badge badge-work">Experience</span>
+        <div class="card-icon-wrap work"><i class="fas fa-briefcase"></i></div>
+      </div>
+      <div class="card-body">
+        <h3>Intern Software Engineer</h3>
+        <p>9-month internship developing a Vehicle Management Information System using Java, JSF, and MySQL.</p>
+        <div class="card-meta">
+          <span class="card-org"><i class="fas fa-hospital"></i> Ministry of Health Sri Lanka</span>
+          <span class="card-date">Jan — Sep 2024</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Education 3 -->
+    <div class="achieve-card" data-cat="edu">
+      <div class="card-visual">
+        <div class="card-visual-bg edu"></div>
+        <span class="card-badge badge-edu">Education</span>
+    
+        <!-- ADD THIS IMAGE TAG -->
+        <img src="images/th.jpg" alt="ST/Aloysius College" 
+          style="position:absolute; inset:0; width:auto; height:auto; object-fit:cover; opacity:0.35; z-index:0; margin:auto;">
+    
+        <div class="card-icon-wrap edu"><i class="fas fa-award"></i></div>
+      </div>
+      <div class="card-body">
+        <h3>G.C.E Advanced Level — Commerce</h3>
+        <p>Commerce stream at ST/Aloysius College, Galle — building analytical and logical thinking foundations.</p>
+        <div class="card-meta">
+          <span class="card-org"><i class="fas fa-school"></i> ST/Aloysius College — Galle</span>
+          <span class="card-date">2019</span>
+        </div>
+      </div>
+    </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="page-footer">© 2026  Renuka Theminda Kirulapana · All rights reserved.</div>
+
+<script>
+  function filterCards(cat, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.achieve-card').forEach(card => {
+      const match = cat === 'all' || card.dataset.cat === cat;
+      card.style.display = match ? '' : 'none';
+    });
+  }
+</script>
+</body>
+</html>
