@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Achievements — Renuka Theminda</title>
+  <link rel="icon" type="image/x-icon" href="images/logo.png">
+  <title>Renuka Theminda | Achievements</title>
+
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
   <style>
-    *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     :root {
       --bg: #060810;
       --surface: #0d1120;
       --surface2: #131828;
-      --border: rgba(255,255,255,0.07);
+      --border: rgba(255, 255, 255, 0.07);
       --text: #e8eaf0;
       --muted: #6b7280;
       --accent: #00e5ff;
@@ -20,7 +32,11 @@
       --accent3: #f59e0b;
       --radius: 16px;
     }
-    html { scroll-behavior: smooth; }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'DM Sans', sans-serif;
       background: var(--bg);
@@ -28,123 +44,254 @@
       overflow-x: hidden;
       min-height: 100vh;
     }
-    ::-webkit-scrollbar { width: 4px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 2px;
+    }
 
     body::after {
       content: '';
-      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
       background-image:
-        linear-gradient(rgba(0,229,255,0.025) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0,229,255,0.025) 1px, transparent 1px);
+        linear-gradient(rgba(0, 229, 255, 0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 229, 255, 0.025) 1px, transparent 1px);
       background-size: 60px 60px;
       animation: gridMove 20s linear infinite;
     }
-    @keyframes gridMove { from{background-position:0 0} to{background-position:60px 60px} }
+
+    @keyframes gridMove {
+      from {
+        background-position: 0 0
+      }
+
+      to {
+        background-position: 60px 60px
+      }
+    }
 
     .blob {
-      position: fixed; border-radius: 50%;
-      filter: blur(90px); pointer-events: none; z-index: 0;
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
     }
+
     .blob-1 {
-      width: 500px; height: 500px;
-      background: radial-gradient(circle, rgba(0,229,255,0.08), transparent 70%);
-      top: -150px; right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0, 229, 255, 0.08), transparent 70%);
+      top: -150px;
+      right: -100px;
       animation: float 9s ease-in-out infinite;
     }
+
     .blob-2 {
-      width: 400px; height: 400px;
-      background: radial-gradient(circle, rgba(124,58,237,0.07), transparent 70%);
-      bottom: 0; left: -100px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.07), transparent 70%);
+      bottom: 0;
+      left: -100px;
       animation: float 12s ease-in-out infinite reverse;
     }
-    @keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-30px)} }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-30px)
+      }
+    }
 
     nav {
-      position: fixed; top: 0; width: 100%; z-index: 100;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 100;
       padding: 18px 0;
-      background: rgba(6,8,16,0.85);
+      background: rgba(6, 8, 16, 0.85);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
+
     .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 32px;
-      display: flex; align-items: center; gap: 16px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
     }
+
     .back-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: var(--muted); text-decoration: none;
-      font-size: 13px; font-weight: 500;
-      padding: 7px 16px; border-radius: 50px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      padding: 7px 16px;
+      border-radius: 50px;
       border: 1px solid var(--border);
       transition: all 0.3s;
     }
-    .back-btn:hover { color: var(--accent); border-color: rgba(0,229,255,0.3); }
+
+    .back-btn:hover {
+      color: var(--accent);
+      border-color: rgba(0, 229, 255, 0.3);
+    }
+
     .nav-logo {
-      font-family: 'Syne', sans-serif; font-weight: 800;
-      font-size: 20px; color: var(--accent);
-      text-decoration: none; margin-right: auto;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: var(--accent);
+      text-decoration: none;
+      margin-right: auto;
     }
 
     .page-header {
-      position: relative; z-index: 2;
+      position: relative;
+      z-index: 2;
       padding: 140px 0 60px;
       text-align: center;
     }
+
     .section-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(0,229,255,0.08);
-      border: 1px solid rgba(0,229,255,0.2);
-      border-radius: 50px; padding: 6px 16px;
-      font-size: 12px; font-weight: 500;
-      color: var(--accent); letter-spacing: 1.5px; text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0, 229, 255, 0.08);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
       margin-bottom: 20px;
     }
+
     .section-tag::before {
-      content: ''; width: 6px; height: 6px;
-      background: var(--accent); border-radius: 50%;
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
       animation: blink 1.5s infinite;
     }
-    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1
+      }
+
+      50% {
+        opacity: 0
+      }
+    }
+
     .page-title {
       font-family: 'Syne', sans-serif;
       font-size: clamp(40px, 6vw, 68px);
-      font-weight: 800; letter-spacing: -2px; line-height: 1;
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1;
       margin-bottom: 16px;
     }
+
     .page-title span {
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .page-sub { color: var(--muted); font-size: 17px; max-width: 500px; margin: 0 auto 48px; line-height: 1.7; }
+
+    .page-sub {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 500px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
+    }
 
     .filters {
-      display: flex; justify-content: center; gap: 8px;
-      flex-wrap: wrap; margin-bottom: 64px;
-      position: relative; z-index: 2;
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+      position: relative;
+      z-index: 2;
       padding: 0 16px;
     }
+
     .filter-btn {
-      padding: 8px 20px; border-radius: 50px;
+      padding: 8px 20px;
+      border-radius: 50px;
       border: 1px solid var(--border);
-      background: transparent; color: var(--muted);
-      font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
-      cursor: pointer; transition: all 0.3s;
+      background: transparent;
+      color: var(--muted);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
     }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--accent); color: #000; border-color: var(--accent);
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--accent);
+      color: #000;
+      border-color: var(--accent);
     }
 
     .gallery-section {
-      max-width: 1200px; margin: 0 auto; padding: 0 32px 120px;
-      position: relative; z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px 120px;
+      position: relative;
+      z-index: 2;
     }
+
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      grid-auto-columns: 100%;
+      grid-auto-flow: column;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    .gallery-viewport {
+      overflow: hidden;
+      width: 100%;
+      border-radius: var(--radius);
+      touch-action: pan-y;
+    }
+
+    .achieve-card {
+      width: min(100%, 760px);
+      justify-self: center;
     }
 
     .achieve-card {
@@ -152,311 +299,1011 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       overflow: hidden;
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
-                  box-shadow 0.4s, border-color 0.4s;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.4s, border-color 0.4s;
       cursor: default;
-      opacity: 0; transform: translateY(30px);
+      opacity: 0;
+      transform: translateY(30px);
       animation: cardIn 0.6s forwards;
     }
+
     .achieve-card:hover {
       transform: translateY(-10px) scale(1.01);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.5), 0 0 40px rgba(0,229,255,0.12);
-      border-color: rgba(0,229,255,0.25);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 229, 255, 0.12);
+      border-color: rgba(0, 229, 255, 0.25);
     }
 
-    .achieve-card.tall .card-visual { height: 260px; }
-    .achieve-card.wide { grid-column: span 2; }
-    .achieve-card.wide .card-visual { height: 220px; }
+    .achieve-card.tall .card-visual {
+      height: 260px;
+    }
 
-    @keyframes cardIn { to { opacity:1; transform:translateY(0); } }
-    .achieve-card:nth-child(1) { animation-delay: 0.05s; }
-    .achieve-card:nth-child(2) { animation-delay: 0.12s; }
-    .achieve-card:nth-child(3) { animation-delay: 0.18s; }
-    .achieve-card:nth-child(4) { animation-delay: 0.24s; }
-    .achieve-card:nth-child(5) { animation-delay: 0.30s; }
-    .achieve-card:nth-child(6) { animation-delay: 0.36s; }
-    .achieve-card:nth-child(7) { animation-delay: 0.42s; }
-    .achieve-card:nth-child(8) { animation-delay: 0.48s; }
+    .achieve-card.wide .card-visual {
+      height: 220px;
+    }
+
+    .achieve-card[hidden] {
+      display: none;
+    }
+
+    .achieve-card.photo-card .card-visual {
+      height: clamp(300px, 52vw, 480px);
+      background: #090b12;
+    }
+
+    .gallery-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .gallery-controls[hidden] {
+      display: none;
+    }
+
+    .gallery-control,
+    .gallery-dot {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      background: var(--surface);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+
+    .gallery-control {
+      min-width: 42px;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 50px;
+      gap: 8px;
+      font: 500 13px 'DM Sans', sans-serif;
+    }
+
+    .gallery-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border-radius: 50%;
+    }
+
+    .gallery-control:hover,
+    .gallery-control:focus-visible,
+    .gallery-dot:hover,
+    .gallery-dot:focus-visible,
+    .gallery-dot[aria-current="true"] {
+      color: #000;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .gallery-control:focus-visible,
+    .gallery-dot:focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 3px;
+    }
+
+    .gallery-dots {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    @keyframes cardIn {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .achieve-card:nth-child(1) {
+      animation-delay: 0.05s;
+    }
+
+    .achieve-card:nth-child(2) {
+      animation-delay: 0.12s;
+    }
+
+    .achieve-card:nth-child(3) {
+      animation-delay: 0.18s;
+    }
+
+    .achieve-card:nth-child(4) {
+      animation-delay: 0.24s;
+    }
+
+    .achieve-card:nth-child(5) {
+      animation-delay: 0.30s;
+    }
+
+    .achieve-card:nth-child(6) {
+      animation-delay: 0.36s;
+    }
+
+    .achieve-card:nth-child(7) {
+      animation-delay: 0.42s;
+    }
+
+    .achieve-card:nth-child(8) {
+      animation-delay: 0.48s;
+    }
 
     /* ── CARD VISUAL ─────────────────────────────────────────── */
     .card-visual {
       height: 180px;
       position: relative;
       overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Responsive image inside card-visual — KEY FIX */
     .card-visual .card-bg-img {
       position: absolute;
       inset: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      object-position: center top;
-      opacity: 0.4;
-      z-index: 0;
-      transition: transform 0.6s cubic-bezier(0.16,1,0.3,1);
+      object-fit: contain;
+      object-position: center;
+      opacity: 1;
+      z-index: 1;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .achieve-card:hover .card-bg-img { transform: scale(1.06); }
+
+    .achieve-card:hover .card-bg-img {
+      transform: scale(1.06);
+    }
+
+    .achieve-card.photo-card:hover .card-bg-img {
+      transform: none;
+    }
 
     .card-visual-bg {
-      position: absolute; inset: 0;
+      position: absolute;
+      inset: 0;
     }
-    .achieve-card:hover .card-visual-bg { transform: scale(1.06); }
 
-    .card-visual-bg.cert  { background: linear-gradient(135deg, #0a1628, #0e2040); }
-    .card-visual-bg.edu   { background: linear-gradient(135deg, #100a28, #1a0f40); }
-    .card-visual-bg.work  { background: linear-gradient(135deg, #0a1e1a, #0d2e25); }
-    .card-visual-bg.skill { background: linear-gradient(135deg, #1a1008, #2a1c0d); }
-    .card-visual-bg.award { background: linear-gradient(135deg, #1a0a14, #280f1e); }
+    .achieve-card:hover .card-visual-bg {
+      transform: scale(1.06);
+    }
+
+    .card-visual-bg.cert {
+      background: linear-gradient(135deg, #0a1628, #0e2040);
+    }
+
+    .card-visual-bg.edu {
+      background: linear-gradient(135deg, #100a28, #1a0f40);
+    }
+
+    .card-visual-bg.work {
+      background: linear-gradient(135deg, #0a1e1a, #0d2e25);
+    }
+
+    .card-visual-bg.skill {
+      background: linear-gradient(135deg, #1a1008, #2a1c0d);
+    }
+
+    .card-visual-bg.award {
+      background: linear-gradient(135deg, #1a0a14, #280f1e);
+    }
 
     .card-icon-wrap {
-      position: relative; z-index: 1;
-      width: 72px; height: 72px; border-radius: 20px;
-      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      z-index: 1;
+      width: 72px;
+      height: 72px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 32px;
-      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .achieve-card:hover .card-icon-wrap { transform: scale(1.15) rotate(-5deg); }
 
-    .card-icon-wrap.cert  { background: rgba(0,229,255,0.1);  color: var(--accent);  border: 1px solid rgba(0,229,255,0.2); }
-    .card-icon-wrap.edu   { background: rgba(124,58,237,0.1); color: #a78bfa;        border: 1px solid rgba(124,58,237,0.2); }
-    .card-icon-wrap.work  { background: rgba(16,185,129,0.1); color: #34d399;        border: 1px solid rgba(16,185,129,0.2); }
-    .card-icon-wrap.skill { background: rgba(245,158,11,0.1); color: var(--accent3); border: 1px solid rgba(245,158,11,0.2); }
-    .card-icon-wrap.award { background: rgba(236,72,153,0.1); color: #f472b6;        border: 1px solid rgba(236,72,153,0.2); }
+    .achieve-card:hover .card-icon-wrap {
+      transform: scale(1.15) rotate(-5deg);
+    }
+
+    .card-icon-wrap.cert {
+      background: rgba(0, 229, 255, 0.1);
+      color: var(--accent);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+    }
+
+    .card-icon-wrap.edu {
+      background: rgba(124, 58, 237, 0.1);
+      color: #a78bfa;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+    }
+
+    .card-icon-wrap.work {
+      background: rgba(16, 185, 129, 0.1);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .card-icon-wrap.skill {
+      background: rgba(245, 158, 11, 0.1);
+      color: var(--accent3);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .card-icon-wrap.award {
+      background: rgba(236, 72, 153, 0.1);
+      color: #f472b6;
+      border: 1px solid rgba(236, 72, 153, 0.2);
+    }
 
     .card-badge {
-      position: absolute; top: 14px; right: 14px;
-      font-size: 11px; padding: 4px 10px; border-radius: 50px;
-      font-weight: 500; letter-spacing: 0.5px; z-index: 2;
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 50px;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      z-index: 2;
     }
-    .badge-cert  { background: rgba(0,229,255,0.12);  color: var(--accent);  border: 1px solid rgba(0,229,255,0.2); }
-    .badge-edu   { background: rgba(124,58,237,0.12); color: #a78bfa;        border: 1px solid rgba(124,58,237,0.2); }
-    .badge-work  { background: rgba(16,185,129,0.12); color: #34d399;        border: 1px solid rgba(16,185,129,0.2); }
-    .badge-skill { background: rgba(245,158,11,0.12); color: var(--accent3); border: 1px solid rgba(245,158,11,0.2); }
-    .badge-award { background: rgba(236,72,153,0.12); color: #f472b6;        border: 1px solid rgba(236,72,153,0.2); }
+
+    .badge-cert {
+      background: rgba(0, 229, 255, 0.12);
+      color: var(--accent);
+      border: 1px solid rgba(0, 229, 255, 0.2);
+    }
+
+    .badge-edu {
+      background: rgba(124, 58, 237, 0.12);
+      color: #a78bfa;
+      border: 1px solid rgba(124, 58, 237, 0.2);
+    }
+
+    .badge-work {
+      background: rgba(16, 185, 129, 0.12);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.2);
+    }
+
+    .badge-skill {
+      background: rgba(245, 158, 11, 0.12);
+      color: var(--accent3);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .badge-award {
+      background: rgba(236, 72, 153, 0.12);
+      color: #f472b6;
+      border: 1px solid rgba(236, 72, 153, 0.2);
+    }
 
     .card-visual::after {
       content: '';
-      position: absolute; inset: 0;
-      background: linear-gradient(135deg, transparent 40%, rgba(255,255,255,0.04) 50%, transparent 60%);
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 40%, rgba(255, 255, 255, 0.04) 50%, transparent 60%);
       transform: translateX(-100%);
       transition: transform 0.6s;
       z-index: 1;
     }
-    .achieve-card:hover .card-visual::after { transform: translateX(100%); }
 
-    .card-body { padding: 22px 24px 24px; }
+    .achieve-card:hover .card-visual::after {
+      transform: translateX(100%);
+    }
+
+    .card-body {
+      padding: 22px 24px 24px;
+    }
+
     .card-body h3 {
-      font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 700;
-      line-height: 1.35; margin-bottom: 8px;
+      font-family: 'Syne', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 8px;
     }
+
     .card-body p {
-      color: var(--muted); font-size: 13px; line-height: 1.7; margin-bottom: 16px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.7;
+      margin-bottom: 16px;
     }
+
     .card-meta {
-      display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
     }
+
     .card-org {
-      font-size: 12px; color: var(--muted);
-      display: flex; align-items: center; gap: 6px;
+      font-size: 12px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    .card-org i { font-size: 11px; }
+
+    .card-org i {
+      font-size: 11px;
+    }
+
     .card-date {
-      font-size: 11px; padding: 3px 10px; border-radius: 50px;
-      background: rgba(255,255,255,0.04);
+      font-size: 11px;
+      padding: 3px 10px;
+      border-radius: 50px;
+      background: rgba(255, 255, 255, 0.04);
       border: 1px solid var(--border);
       color: var(--muted);
     }
+
     .card-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 12px; color: var(--accent); text-decoration: none;
-      font-weight: 500; margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+      margin-top: 14px;
       transition: gap 0.3s;
     }
-    .card-link:hover { gap: 10px; }
+
+    .card-link:hover {
+      gap: 10px;
+    }
 
     .stats-row {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 16px; margin-bottom: 56px;
-      position: relative; z-index: 2;
-      max-width: 1200px; margin: 0 auto 56px; padding: 0 32px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 56px;
+      position: relative;
+      z-index: 2;
+      max-width: 1200px;
+      margin: 0 auto 56px;
+      padding: 0 32px;
     }
+
     .stat-box {
-      background: var(--surface); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 20px 24px;
-      text-align: center; transition: all 0.3s;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px 24px;
+      text-align: center;
+      transition: all 0.3s;
     }
-    .stat-box:hover { border-color: rgba(0,229,255,0.2); transform: translateY(-4px); }
+
+    .stat-box:hover {
+      border-color: rgba(0, 229, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
     .stat-num {
-      font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 800;
+      font-family: 'Syne', sans-serif;
+      font-size: 36px;
+      font-weight: 800;
       background: linear-gradient(135deg, var(--accent), var(--accent2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-    .stat-label { font-size: 12px; color: var(--muted); margin-top: 4px; letter-spacing: 0.5px; }
+
+    .stat-label {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
 
     .page-footer {
       border-top: 1px solid var(--border);
-      padding: 32px; text-align: center;
-      color: var(--muted); font-size: 13px;
-      position: relative; z-index: 2;
+      padding: 32px;
+      text-align: center;
+      color: var(--muted);
+      font-size: 13px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── PHOTO GALLERY SLIDER ── */
+    .pg-section {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 32px 120px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .pg-head {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+
+    .pg-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(30px, 5vw, 48px);
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+
+    .pg-title span {
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .pg-viewport {
+      position: relative;
+      overflow: hidden;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      touch-action: pan-y;
+    }
+
+    .pg-track {
+      display: flex;
+      transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: transform;
+    }
+
+    .pg-slide {
+      position: relative;
+      flex: 0 0 100%;
+      margin: 0;
+      height: clamp(260px, 52vw, 520px);
+      background: #090b12;
+    }
+
+    .pg-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .pg-slide figcaption {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 40px 24px 18px;
+      font-size: 14px;
+      color: #fff;
+      background: linear-gradient(transparent, rgba(0, 0, 0, 0.75));
+    }
+
+    .pg-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: rgba(6, 8, 16, 0.7);
+      color: var(--text);
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .pg-arrow:hover,
+    .pg-arrow:focus-visible {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .pg-prev {
+      left: 14px;
+    }
+
+    .pg-next {
+      right: 14px;
+    }
+
+    .pg-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 18px;
+      margin-top: 18px;
+    }
+
+    .pg-dots {
+      display: flex;
+      gap: 10px;
+    }
+
+    .pg-dot {
+      width: 10px;
+      height: 10px;
+      padding: 0;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--surface2);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .pg-dot[aria-current="true"] {
+      background: var(--accent);
+      border-color: var(--accent);
+      width: 26px;
+      border-radius: 10px;
+    }
+
+    .pg-toggle {
+      padding: 8px 16px;
+      border-radius: 50px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      color: var(--text);
+      font: 500 13px 'DM Sans', sans-serif;
+      cursor: pointer;
+    }
+
+    .pg-toggle:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    .pg-progress {
+      height: 3px;
+      background: var(--surface2);
+      border-radius: 3px;
+      margin-top: 14px;
+      overflow: hidden;
+    }
+
+    .pg-progress span {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    @media (max-width: 580px) {
+      .pg-section {
+        padding: 0 16px 80px;
+      }
+
+      .pg-arrow {
+        width: 38px;
+        height: 38px;
+      }
     }
 
     /* ── RESPONSIVE ──────────────────────────────────────────── */
     @media (max-width: 900px) {
-      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
-      .achieve-card.wide { grid-column: span 1; }
-      .achieve-card.wide .card-visual { height: 180px; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); }
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
     }
 
     @media (max-width: 580px) {
-      .gallery-grid { grid-template-columns: 1fr; }
-      .achieve-card.wide { grid-column: span 1; }
-      .achieve-card.wide .card-visual { height: 180px; }
-      .achieve-card.tall .card-visual { height: 200px; }
-      .stats-row { grid-template-columns: repeat(2, 1fr); padding: 0 16px; }
-      .gallery-section { padding: 0 16px 80px; }
-      .nav-inner { padding: 0 16px; }
-      .page-header { padding: 120px 16px 40px; }
-      .card-body { padding: 16px 18px 20px; }
-      .stat-num { font-size: 28px; }
+      .gallery-controls {
+        gap: 10px;
+      }
+
+      .gallery-control {
+        min-width: 40px;
+        min-height: 40px;
+      }
+
+      .achieve-card.tall .card-visual {
+        height: 200px;
+      }
+
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 16px;
+      }
+
+      .gallery-section {
+        padding: 0 16px 80px;
+      }
+
+      .nav-inner {
+        padding: 0 16px;
+      }
+
+      .page-header {
+        padding: 120px 16px 40px;
+      }
+
+      .page-title {
+        letter-spacing: -1px;
+      }
+
+      .page-sub {
+        font-size: 15px;
+      }
+
+      .card-body {
+        padding: 16px 18px 20px;
+      }
+
+      .stat-num {
+        font-size: 28px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
+
 <body>
 
-<div class="blob blob-1"></div>
-<div class="blob blob-2"></div>
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo">RT.</a>
-    <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
-  </div>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">RT.</a>
+      <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> Back to Portfolio</a>
+    </div>
+  </nav>
 
-<!-- HEADER -->
-<div class="page-header">
-  <span class="section-tag">My Journey</span>
-  <h1 class="page-title">My <span>Achievements</span></h1>
-  <p class="page-sub">Certifications, education milestones, work experience, and skills earned along the way.</p>
+  <!-- HEADER -->
+  <div class="page-header">
+    <span class="section-tag">My Journey</span>
+    <h1 class="page-title">My <span>Achievements</span></h1>
+    <p class="page-sub">Certifications, education milestones, work experience, and skills earned along the way.</p>
 
-  <div class="filters">
-    <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
-    <button class="filter-btn" onclick="filterCards('cert', this)">Certificates</button>
-    <button class="filter-btn" onclick="filterCards('edu', this)">Education</button>
-    <button class="filter-btn" onclick="filterCards('work', this)">Experience</button>
-    <button class="filter-btn" onclick="filterCards('skill', this)">Skills</button>
+    <div class="filters">
+      <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+      <button class="filter-btn" onclick="filterCards('cert', this)">Certificates</button>
+      <button class="filter-btn" onclick="filterCards('edu', this)">Education</button>
+      <button class="filter-btn" onclick="filterCards('work', this)">Experience</button>
+      <button class="filter-btn" onclick="filterCards('skill', this)">Skills</button>
+    </div>
   </div>
-</div>
 
-<!-- STATS -->
-<div class="stats-row">
-  <div class="stat-box">
-    <div class="stat-num">5</div>
-    <div class="stat-label">Certificates</div>
+  <!-- STATS -->
+  <div class="stats-row">
+    <div class="stat-box">
+      <div class="stat-num">5</div>
+      <div class="stat-label">Certificates</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Qualifications</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">9mo</div>
+      <div class="stat-label">Work Experience</div>
+    </div>
+    <div class="stat-box">
+      <div class="stat-num">15+</div>
+      <div class="stat-label">Tech Skills</div>
+    </div>
   </div>
-  <div class="stat-box">
-    <div class="stat-num">3</div>
-    <div class="stat-label">Qualifications</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-num">9mo</div>
-    <div class="stat-label">Work Experience</div>
-  </div>
-  <div class="stat-box">
-    <div class="stat-num">15+</div>
-    <div class="stat-label">Tech Skills</div>
-  </div>
-</div>
 
-<!-- GALLERY -->
-<div class="gallery-section">
-  <div class="gallery-grid" id="gallery">
-
-    <!-- Education 1 - wide -->
-    <div class="achieve-card wide" data-cat="edu">
-      <div class="card-visual">
-        
-        <span class="card-badge badge-edu">Education</span>
-        
-        <img
-          src="images/awrd.jpeg"
-          alt="NIBM Diploma Awards"
-          class="card-bg-img"
-          style="height: 260px; width: 150px; object-fit: cover; object-position: center; margin: 0 auto;"
-        >
-        
-      </div>
-      <div class="card-body">
-        <h3>Higher National Diploma in Software Engineering</h3>
-        <p>Advanced diploma covering full-stack development, software architecture, databases, and agile methodologies at NIBM City University.</p>
-        <div class="card-meta">
-          <span class="card-org"><i class="fas fa-university"></i> NIBM City University</span>
-          <span class="card-date">Completed</span>
-        </div>
-      </div>
+  <!-- PHOTO GALLERY SLIDER -->
+  <section class="pg-section">
+    <div class="pg-head">
+      <span class="section-tag">Gallery</span>
+      <h2 class="pg-title">My <span>Gallery</span></h2>
     </div>
 
-    <!-- Work Experience -->
-    <div class="achieve-card tall" data-cat="work">
-      <div class="card-visual">
-        <div class="card-visual-bg work"></div>
-        <span class="card-badge badge-work">Experience</span>
-        <div class="card-icon-wrap work"><i class="fas fa-briefcase"></i></div>
-      </div>
-      <div class="card-body">
-        <h3>Intern Software Engineer</h3>
-        <p>9-month internship developing a Vehicle Management Information System using Java, JSF, and MySQL.</p>
-        <div class="card-meta">
-          <span class="card-org"><i class="fas fa-hospital"></i> Ministry of Health Sri Lanka</span>
-          <span class="card-date">Jan — Sep 2024</span>
+    <div class="pg" id="pg" role="region" aria-roledescription="carousel" aria-label="Photo gallery">
+      <div class="pg-viewport" id="pg-viewport">
+        <div class="pg-track" id="pg-track">
+          <figure class="pg-slide">
+            <img src="images/my/a.jpg" alt="Photo 1" loading="lazy">
+            <figcaption>Caption for photo 1</figcaption>
+          </figure>
+          <figure class="pg-slide">
+            <img src="images/my/b.jpg" alt="Photo 2" loading="lazy">
+            <figcaption>Caption for photo 2</figcaption>
+          </figure>
+          <figure class="pg-slide">
+            <img src="images/my/c.jpg" alt="Photo 3" loading="lazy">
+            <figcaption>Caption for photo 3</figcaption>
+          </figure>
+           <figure class="pg-slide">
+            <img src="images/my/d.jpg" alt="Photo 3" loading="lazy">
+            <figcaption>Caption for photo 3</figcaption>
+          </figure>
+           <figure class="pg-slide">
+            <img src="images/my/e.jpg" alt="Photo 3" loading="lazy">
+            <figcaption>Caption for photo 3</figcaption>
+          </figure>
+           <figure class="pg-slide">
+            <img src="images/my/f.jpg" alt="Photo 3" loading="lazy">
+            <figcaption>Caption for photo 3</figcaption>
+          </figure>
+          <!-- add more <figure class="pg-slide"> blocks as needed -->
         </div>
+
+        <button class="pg-arrow pg-prev" id="pg-prev" type="button" aria-label="Previous photo">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="pg-arrow pg-next" id="pg-next" type="button" aria-label="Next photo">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+
+      <div class="pg-bar">
+        <div class="pg-dots" id="pg-dots"></div>
+        <button class="pg-toggle" id="pg-toggle" type="button">Pause</button>
+      </div>
+      <div class="pg-progress"><span id="pg-progress"></span></div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <div class="gallery-section">
+    <div class="gallery-viewport" id="gallery-viewport" role="region" aria-label="My achievements"
+      aria-roledescription="carousel">
+       <div class="pg-head">
+      <span class="section-tag">Achievements</span>
+      <h2 class="pg-title">My <span>Achievements</span></h2>
+    </div>
+      <div class="gallery-grid" id="gallery">
+
+        <!-- Education 1 - wide -->
+        <article class="achieve-card wide photo-card" data-cat="edu">
+          <div class="card-visual">
+
+            <span class="card-badge badge-edu">Education</span>
+
+            <img src="images/awrd.jpeg" alt="NIBM Diploma Awards" class="card-bg-img">
+
+          </div>
+          <div class="card-body">
+            <h3>Higher National Diploma in Software Engineering</h3>
+            <p>Advanced diploma covering full-stack development, software architecture, databases, and agile
+              methodologies at NIBM City University.</p>
+            <div class="card-meta">
+              <span class="card-org"><i class="fas fa-university"></i> NIBM City University</span>
+              <span class="card-date">Completed</span>
+            </div>
+          </div>
+        </article>
+
+        
+
+        <!-- Education 3 -->
+        <article class="achieve-card photo-card" data-cat="edu">
+          <div class="card-visual">
+            <div class="card-visual-bg edu"></div>
+            <span class="card-badge badge-edu">Education</span>
+            <img src="images/th.jpg" alt="ST/Aloysius College" class="card-bg-img">
+
+          </div>
+          <div class="card-body">
+            <h3>G.C.E Advanced Level — Commerce</h3>
+            <p>Commerce stream at ST/Aloysius College, Galle — building analytical and logical thinking foundations.</p>
+            <div class="card-meta">
+              <span class="card-org"><i class="fas fa-school"></i> ST/Aloysius College — Galle</span>
+              <span class="card-date">2019</span>
+            </div>
+          </div>
+        </article>
+
       </div>
     </div>
-
-    <!-- Education 3 -->
-    <div class="achieve-card" data-cat="edu">
-      <div class="card-visual">
-        <div class="card-visual-bg edu"></div>
-        <span class="card-badge badge-edu">Education</span>
-        <img
-          src="images/th.jpg"
-          alt="ST/Aloysius College"
-          class="card-bg-img"
-          style=" width: 100px; height: 150px;  object-position: center; margin: 0 auto;" 
-        >
-      
-      </div>
-      <div class="card-body">
-        <h3>G.C.E Advanced Level — Commerce</h3>
-        <p>Commerce stream at ST/Aloysius College, Galle — building analytical and logical thinking foundations.</p>
-        <div class="card-meta">
-          <span class="card-org"><i class="fas fa-school"></i> ST/Aloysius College — Galle</span>
-          <span class="card-date">2019</span>
-        </div>
-      </div>
+    <div class="gallery-controls" aria-label="Gallery controls">
+      <button class="gallery-control" id="gallery-prev" type="button" aria-label="Previous achievement">
+        <i class="fas fa-arrow-left" aria-hidden="true"></i>
+      </button>
+      <div class="gallery-dots" id="gallery-dots" aria-label="Choose an achievement"></div>
+      <button class="gallery-control" id="gallery-next" type="button" aria-label="Next achievement">
+        <i class="fas fa-arrow-right" aria-hidden="true"></i>
+      </button>
+      <button class="gallery-control" id="gallery-toggle" type="button">Pause</button>
     </div>
-
   </div>
-</div>
 
-<div class="page-footer">© 2026 Renuka Theminda Kirulapana · All rights reserved.</div>
+  <div class="page-footer">© 2026 Renuka Theminda Kirulapana · All rights reserved.
+    <p style="text-align: center;color: #62c54c;font-size: 0.9em;">Last updated: 04 November 2026</p>
+  </div>
 
-<script>
-  function filterCards(cat, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    document.querySelectorAll('.achieve-card').forEach(card => {
-      const match = cat === 'all' || card.dataset.cat === cat;
-      card.style.display = match ? '' : 'none';
+  <script>
+    const gallery = document.getElementById('gallery');
+    const galleryViewport = document.getElementById('gallery-viewport');
+    const galleryCards = Array.from(gallery.querySelectorAll('.achieve-card'));
+    const galleryDots = document.getElementById('gallery-dots');
+    const galleryControls = document.querySelector('.gallery-controls');
+    const galleryToggle = document.getElementById('gallery-toggle');
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let visibleCards = galleryCards;
+    let currentIndex = 0;
+    let autoplayTimer;
+    let isPaused = reducedMotion.matches;
+    let isHovered = false;
+    let hasFocus = false;
+    let touchStartX = null;
+    galleryToggle.textContent = isPaused ? 'Play' : 'Pause';
+    galleryToggle.setAttribute('aria-label', isPaused ? 'Resume autoplay' : 'Pause autoplay');
+
+    function updateGallery() {
+      currentIndex = visibleCards.length ? currentIndex % visibleCards.length : 0;
+      gallery.style.transform = `translateX(-${currentIndex * 100}%)`;
+      galleryCards.forEach(card => {
+        const active = visibleCards[currentIndex] === card;
+        card.setAttribute('aria-hidden', String(!active));
+        card.toggleAttribute('inert', !active);
+        if (visibleCards.includes(card)) {
+          card.setAttribute('aria-label', `Achievement ${visibleCards.indexOf(card) + 1} of ${visibleCards.length}`);
+          card.setAttribute('aria-roledescription', 'slide');
+        }
+      });
+
+      galleryDots.replaceChildren(...visibleCards.map((card, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.className = 'gallery-dot';
+        dot.setAttribute('aria-label', `Show achievement ${index + 1}`);
+        dot.setAttribute('aria-current', String(index === currentIndex));
+        dot.addEventListener('click', () => showSlide(index));
+        return dot;
+      }));
+
+      galleryControls.hidden = visibleCards.length < 2;
+    }
+
+    function showSlide(index) {
+      if (!visibleCards.length) return;
+      currentIndex = (index + visibleCards.length) % visibleCards.length;
+      updateGallery();
+    }
+
+    function startAutoplay() {
+      window.clearInterval(autoplayTimer);
+      if (!isPaused && !isHovered && !hasFocus && !document.hidden && visibleCards.length > 1) {
+        autoplayTimer = window.setInterval(() => showSlide(currentIndex + 1), 5000);
+      }
+    }
+
+    function filterCards(category, button) {
+      document.querySelectorAll('.filter-btn').forEach(filter => filter.classList.remove('active'));
+      button.classList.add('active');
+      visibleCards = galleryCards.filter(card => category === 'all' || card.dataset.cat === category);
+      galleryCards.forEach(card => {
+        card.hidden = !visibleCards.includes(card);
+      });
+      currentIndex = 0;
+      updateGallery();
+      startAutoplay();
+    }
+
+    /* ── PHOTO GALLERY SLIDER ── */
+    (function () {
+      const track = document.getElementById('pg-track');
+      const viewport = document.getElementById('pg-viewport');
+      const slides = Array.from(track.children);
+      const dotsWrap = document.getElementById('pg-dots');
+      const toggle = document.getElementById('pg-toggle');
+      const progress = document.getElementById('pg-progress');
+      const DELAY = 4000; // ms between slides
+
+      let index = 0, timer = null, paused = reducedMotion.matches, hovered = false, startX = null;
+
+      slides.forEach((_, i) => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'pg-dot';
+        d.setAttribute('aria-label', `Show photo ${i + 1}`);
+        d.addEventListener('click', () => { go(i); restart(); });
+        dotsWrap.appendChild(d);
+      });
+
+      function render() {
+        track.style.transform = `translateX(-${index * 100}%)`;
+        Array.from(dotsWrap.children).forEach((d, i) => d.setAttribute('aria-current', String(i === index)));
+        slides.forEach((s, i) => s.setAttribute('aria-hidden', String(i !== index)));
+      }
+
+      function go(i) { index = (i + slides.length) % slides.length; render(); }
+
+      function animateProgress() {
+        progress.style.transition = 'none';
+        progress.style.width = '0';
+        if (paused || hovered) return;
+        void progress.offsetWidth; // restart animation
+        progress.style.transition = `width ${DELAY}ms linear`;
+        progress.style.width = '100%';
+      }
+
+      function restart() {
+        clearInterval(timer);
+        animateProgress();
+        if (!paused && !hovered && !document.hidden && slides.length > 1) {
+          timer = setInterval(() => { go(index + 1); animateProgress(); }, DELAY);
+        }
+      }
+
+      document.getElementById('pg-prev').addEventListener('click', () => { go(index - 1); restart(); });
+      document.getElementById('pg-next').addEventListener('click', () => { go(index + 1); restart(); });
+
+      toggle.textContent = paused ? 'Play' : 'Pause';
+      toggle.addEventListener('click', () => {
+        paused = !paused;
+        toggle.textContent = paused ? 'Play' : 'Pause';
+        restart();
+      });
+
+      viewport.addEventListener('pointerenter', () => { hovered = true; restart(); });
+      viewport.addEventListener('pointerleave', () => { hovered = false; restart(); });
+      viewport.addEventListener('pointerdown', e => { startX = e.clientX; });
+      viewport.addEventListener('pointerup', e => {
+        if (startX === null) return;
+        const dx = e.clientX - startX;
+        if (Math.abs(dx) > 40) { go(index + (dx < 0 ? 1 : -1)); restart(); }
+        startX = null;
+      });
+      document.addEventListener('visibilitychange', restart);
+
+      render();
+      restart();
+    })();
+
+    document.getElementById('gallery-prev').addEventListener('click', () => showSlide(currentIndex - 1));
+    document.getElementById('gallery-next').addEventListener('click', () => showSlide(currentIndex + 1));
+    galleryToggle.addEventListener('click', () => {
+      isPaused = !isPaused;
+      galleryToggle.textContent = isPaused ? 'Play' : 'Pause';
+      galleryToggle.setAttribute('aria-label', isPaused ? 'Resume autoplay' : 'Pause autoplay');
+      startAutoplay();
     });
-  }
-</script>
+
+    galleryViewport.addEventListener('pointerdown', event => {
+      touchStartX = event.clientX;
+    });
+    galleryViewport.addEventListener('pointerup', event => {
+      if (touchStartX === null) return;
+      const swipeDistance = event.clientX - touchStartX;
+      if (Math.abs(swipeDistance) > 40) {
+        showSlide(currentIndex + (swipeDistance < 0 ? 1 : -1));
+      }
+      touchStartX = null;
+    });
+    galleryViewport.addEventListener('pointercancel', () => {
+      touchStartX = null;
+    });
+    galleryViewport.addEventListener('pointerenter', () => {
+      isHovered = true;
+      startAutoplay();
+    });
+    galleryViewport.addEventListener('pointerleave', () => {
+      isHovered = false;
+      startAutoplay();
+    });
+    galleryViewport.addEventListener('focusin', () => {
+      hasFocus = true;
+      startAutoplay();
+    });
+    galleryViewport.addEventListener('focusout', event => {
+      hasFocus = galleryViewport.contains(event.relatedTarget);
+      startAutoplay();
+    });
+    document.addEventListener('visibilitychange', startAutoplay);
+
+    updateGallery();
+    startAutoplay();
+
+  </script>
 </body>
+
 </html>
