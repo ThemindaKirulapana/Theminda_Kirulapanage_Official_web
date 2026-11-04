@@ -31,12 +31,9 @@ window.addEventListener('scroll', function() {
 
 // Enhanced typing effect
 const texts = [
-  "A Software Engineering Undergraduate",
-  "A Web Developer",
-  "A FullStack Developer",
-  "A Programmer",
-  
-  
+  "A Traveller",
+  "Full Stack Developer",
+  "Volography Enthusiast",
 ];
 
 let textIndex = 0;

@@ -246,6 +246,27 @@
       transform: translateY(-3px);
       box-shadow: 0 8px 30px rgba(0,229,255,0.4);
     }
+    .resume-dropdown { position: relative; }
+    .resume-dropdown summary {
+      list-style: none;
+      cursor: pointer;
+    }
+    .resume-dropdown summary::-webkit-details-marker { display: none; }
+    .resume-dropdown summary .fa-chevron-down { font-size: 11px; }
+    .resume-options {
+      position: absolute; top: calc(100% + 8px); left: 0; z-index: 10;
+      min-width: 220px; padding: 6px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+    }
+    .resume-options a {
+      display: block; padding: 10px 12px; border-radius: 8px;
+      color: var(--text); text-decoration: none; font-size: 13px;
+    }
+    .resume-options a:hover,
+    .resume-options a:focus-visible {
+      background: rgba(0,229,255,0.1); color: var(--accent);
+    }
     .btn-ghost {
       display: inline-flex; align-items: center; gap: 10px;
       border: 1px solid var(--border); color: var(--text);
@@ -600,9 +621,17 @@
       const m = String(now.getMinutes()).padStart(2, '0');
       const s = String(now.getSeconds()).padStart(2, '0');
       document.getElementById('time').textContent = `${h}:${m}:${s}`;
+      document.getElementById('date').textContent = now.toLocaleDateString(undefined, {
+        weekday: 'short',
+        year: 'numeric',
+        month: 'short', 
+        day: 'numeric'
+      });
     }
-    updateClock();
-    setInterval(updateClock, 1000);
+    document.addEventListener('DOMContentLoaded', () => {
+      updateClock();
+      setInterval(updateClock, 1000);
+    });
   </script>
 
 <!-- Custom Cursor -->
@@ -613,8 +642,10 @@
 <!-- NAV -->
 <nav id="navbar">
   <div class="nav-container">
-    <div id="time" style="font-size: 12px; color: var(--muted); margin-right: 16px;">00:00:00</div>
-
+  <div style="display: flex; flex-direction: column; margin-right: 16px;">
+    <div id="time" style="font-size: 15px; color: red">00:00:00</div>
+    <div id="date" style="font-size: 12px; color:yellowgreen;"></div>
+  </div>
     <a href="#home" class="nav-logo">RT.</a>
     <div class="nav-links" id="nav-links">
       <a href="#home" class="active">Home</a>
@@ -645,15 +676,24 @@
         </h1>
         <div class="typing-wrapper">
           <span class="typing-prefix">I am</span>
-          <span id="typing-text">A Software Engineer</span>
+          <span id="typing-text">A Traveller</span>
+         
         </div>
         <p class="hero-desc">
-          Passionate software engineering undergraduate at NIBM, building elegant and efficient solutions to complex problems through continuous learning and hands-on project experience.
+          Passionate <b>BSc (Hons) in Computing</b> undergraduate at London Metropolitan University, building elegant and efficient solutions to complex problems through continuous learning and hands-on project experience.
         </p>
         <div class="hero-cta">
-          <a href="images/RENUKA THEMIND cv2.pdf" class="btn-primary" download>
-            <i class="fas fa-download"></i> Download Resume
-          </a>
+          <details class="resume-dropdown">
+            <summary class="btn-primary">
+              <i class="fas fa-download"></i> Download Resume
+              <i class="fas fa-chevron-down" aria-hidden="true"></i>
+            </summary>
+            <div class="resume-options">
+              <a href="images/Renuka_Theminda_CV.pdf" download>IT Related Resume</a>
+              <a href="images/Renuka_Theminda_CV3.pdf" download>General Resume</a>
+            </div>
+          </details>
+          
           <button onclick="window.location.href='achievements.html'" style="display:inline-flex; align-items:center; gap:8px; padding:10px 22px; border-radius:50px; font-size:13px; font-weight:500; letter-spacing:0.4px; cursor:pointer; font-family:inherit; background:transparent; border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.5); transition:all 0.25s ease;">
            Achievements
           </button>
@@ -892,7 +932,9 @@
         </div>
         <div class="project-body">
           <h3>Health Ministry Empoloyee  &amp; Pay Roll System</h3>
-          <p>Group project for UN SDG 6. Contributed the User Profile, Team, Content, and Editor's pages with responsive web design.</p>
+          <p>Developed a comprehensive employee and payroll management system for the Health Ministry, ensuring accurate record-keeping and efficient processing.
+            I used Python Flask for the backend, HTML/CSS/JavaScript for the frontend, and MySQL for database management.
+          </p>
           <div class="project-tags">
             <span class="project-tag">HTML</span>
             <span class="project-tag">CSS</span>
@@ -1053,7 +1095,8 @@
       Privacy Policy
     </button>
   </div>
-  <p>© 2026 Renuka Theminda Kirulapana · Last updated 14 April 2026</p>
+  <p>© 2026 Renuka Theminda Kirulapana</p>
+  <p style="font-size: 12px; color: rgba(137, 229, 103, 0.5);"  > Last updated 04 November 2026</p>
 </footer>
 
 <script>
@@ -1109,7 +1152,7 @@
   }));
 
   /* ── TYPING ──────────────────────────────────────────── */
-  const words = ['A Software Engineer','A Web Developer','A FullStack Developer','A Programmer'];
+  const words = ['A Traveller', 'Full Stack Developer', 'Volography Enthusiast'];
   let wi = 0, ci = 0, del = false;
   function type() {
     const el = document.getElementById('typing-text');
