@@ -1269,7 +1269,6 @@
         padding: 80px 0;
       }
     }
-
   </style>
 
 </head>
@@ -1355,7 +1354,7 @@
           <p style="color: chartreuse; font-weight: 700; font-size: 18px;" class="page-view-counter"
             id="page-view-counter" aria-live="polite" hidden>
             Total Portfolio Page Views: &ensp;
-            <span class="section-tag">50+</span>
+            <span id="page-view-count" class="section-tag"></span>
 
             <!-- id="page-view-count" -->
 
@@ -1871,7 +1870,7 @@
 
   <script>
 
-   
+
 
     /* ── CURSOR ──────────────────────────────────────────── */
     const dot = document.getElementById('cursor-dot');
@@ -2033,21 +2032,33 @@
       const pagePath = currentPath === '/' || currentPath.endsWith('/index.html')
         ? '/'
         : currentPath;
-      fetch(`${goatCounterUrl}/counter/${encodeURIComponent(pagePath)}.json`)
-        .then(response => {
-          if (!response.ok) throw new Error(`GoatCounter returned ${response.status}`);
-          return response.json();
+      // fetch(`${goatCounterUrl}/counter/${encodeURIComponent(pagePath)}.json`)
+      //   .then(response => {
+      //     if (!response.ok) throw new Error(`GoatCounter returned ${response.status}`);
+      //     return response.json();
+      //   })
+      //   .then(data => {
+      //     const pageViews = Number(data.count);
+      //     if (!Number.isSafeInteger(pageViews) || pageViews < 0) {
+      //       throw new Error('GoatCounter returned an invalid page-view count');
+      //     }
+      //     count.textContent = pageViews.toLocaleString();
+      //   })
+      //   .catch(error => {
+      //     console.error('Unable to load portfolio page views:', error);
+      //     count.textContent = 'Unavailable';
+      //   });
+      fetch(`${goatCounterUrl}/counter/TOTAL.json`)
+        .then(r => {
+          if (!r.ok) throw new Error(`GoatCounter returned ${r.status}`);
+          return r.json();
         })
         .then(data => {
-          const pageViews = Number(data.count);
-          if (!Number.isSafeInteger(pageViews) || pageViews < 0) {
-            throw new Error('GoatCounter returned an invalid page-view count');
-          }
-          count.textContent = pageViews.toLocaleString();
+          if (count) count.textContent = data.count_unique ?? data.count;
         })
-        .catch(error => {
-          console.error('Unable to load portfolio page views:', error);
-          count.textContent = 'Unavailable';
+        .catch(err => {
+          console.error('Unable to load page views:', err);
+          if (count) count.textContent = 'Unavailable';
         });
     })();
   </script>
