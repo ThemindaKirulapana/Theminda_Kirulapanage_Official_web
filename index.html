@@ -2012,39 +2012,74 @@
         btn.disabled = false;
       }
     });
-  </script>
 
-  <script>
+    /* ── PAGE VIEW COUNTER ─────────────────────────────────────── */
+
+    // (() => {
+    //   const goatCounterCode = 'renukatheminda';
+    //   const counter = document.getElementById('page-view-counter');
+    //   const count = document.getElementById('page-view-count');
+
+    //   const goatCounterUrl = `https://${goatCounterCode}.goatcounter.com`;
+    //   const tracker = document.createElement('script');
+    //   tracker.async = true;
+    //   tracker.src = 'https://gc.zgo.at/count.js';
+    //   tracker.dataset.goatcounter = `${goatCounterUrl}/count`;
+    //   document.head.appendChild(tracker);
+    //   counter.hidden = false;
+
+    //   const currentPath = window.location.pathname;
+
+    //   fetch(`${goatCounterUrl}/counter/TOTAL.json?t=${Date.now()}`, { cache: 'no-store' })
+    //     .then(r => {
+    //       if (!r.ok) throw new Error(`GoatCounter returned ${r.status}`);
+    //       return r.json();
+    //     })
+    //     .then(data => {
+    //       if (count) count.textContent = data.count_unique ?? data.count;
+    //     })
+    //     .catch(err => {
+    //       console.error('Unable to load page views:', err);
+    //       if (count) count.textContent = 'Unavailable';
+    //     });
+
+    // })();
+
     (() => {
-      const goatCounterCode = 'renukatheminda';
+      const code = 'renukatheminda';
+      const base = `https://${code}.goatcounter.com`;
       const counter = document.getElementById('page-view-counter');
       const count = document.getElementById('page-view-count');
 
-      const goatCounterUrl = `https://${goatCounterCode}.goatcounter.com`;
+      function loadCount() {
+        fetch(`${base}/counter/TOTAL.json?t=${Date.now()}`, { cache: 'no-store' })
+          .then(r => {
+            if (!r.ok) throw new Error(`GoatCounter returned ${r.status}`);
+            return r.json();
+          })
+          .then(data => { count.textContent = data.count_unique; }) // matches dashboard "visits"
+          .catch(err => {
+            console.error('Unable to load page views:', err);
+            count.textContent = 'Unavailable';
+          });
+      }
+
       const tracker = document.createElement('script');
       tracker.async = true;
       tracker.src = 'https://gc.zgo.at/count.js';
-      tracker.dataset.goatcounter = `${goatCounterUrl}/count`;
+      tracker.dataset.goatcounter = `${base}/count`;
+      tracker.onload = () => setTimeout(loadCount, 1500); // let the hit get recorded first
+      tracker.onerror = loadCount;                        // adblock: still show the number
       document.head.appendChild(tracker);
       counter.hidden = false;
-
-      const currentPath = window.location.pathname;
-
-      fetch(`${goatCounterUrl}/counter/TOTAL.json?t=${Date.now()}`, { cache: 'no-store' })
-        .then(r => {
-          if (!r.ok) throw new Error(`GoatCounter returned ${r.status}`);
-          return r.json();
-        })
-        .then(data => {
-          if (count) count.textContent = data.count_unique ?? data.count;
-        })
-        .catch(err => {
-          console.error('Unable to load page views:', err);
-          if (count) count.textContent = 'Unavailable';
-        });
-
     })();
+
+
   </script>
+
+
+
+
 </body>
 
 </html>
