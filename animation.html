@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#060810">
+  <link rel="icon" type="image/x-icon" href="images/logo.png">
   <title>Loading portfolio</title>
   <style>
     * {
@@ -67,7 +68,7 @@
     }
 
     .progress {
-      height: 3px;
+      height: 9px;
       overflow: hidden;
       border-radius: 3px;
       background: #1b2030;
@@ -77,10 +78,18 @@
       display: block;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, #7c3aed, #00e5ff);
+      background: linear-gradient(90deg, #7c3aed, #00e5ff , #0ae323);
       transform: scaleX(0);
       transform-origin: left;
-      animation: load 2.8s ease-in-out forwards;
+    }
+
+    .percent {
+      margin-top: 14px;
+      color: #00e5ff;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      font-variant-numeric: tabular-nums;
     }
 
     @keyframes spin {
@@ -89,10 +98,6 @@
 
     @keyframes glow {
       to { box-shadow: 0 0 36px rgba(0, 229, 255, 0.2); }
-    }
-
-    @keyframes load {
-      to { transform: scaleX(1); }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -107,17 +112,50 @@
 </head>
 <body>
   <main class="loader" aria-live="polite">
-    <div class="monogram" aria-hidden="true">RT.</div>
-    <h1>Renuka Theminda</h1>
-    <p>Getting portfolio ready...</p>
-    <div class="progress" role="progressbar" aria-label="Loading portfolio">
-      <span></span>
+    <div class="monogram" aria-hidden="true">
+      <image src="images/logo.png" alt="Renuka Theminda" width="48" height="48">
     </div>
+    <h1>Renuka Theminda</h1>
+    <p>Get in touch</p>
+
+    <div class="progress" role="progressbar" aria-label="Loading portfolio" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <span id="bar"></span>
+    </div>
+    <div class="percent" id="percent">0%</div>
   </main>
   <script>
-    window.setTimeout(() => {
-      window.location.replace('./?intro-complete=1');
-    }, 2800);
+    (function () {
+      var DURATION = 2800;
+      var bar = document.getElementById('bar');
+      var label = document.getElementById('percent');
+      var track = document.querySelector('.progress');
+      var start = null;
+
+      function ease(t) {
+        return t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+      }
+
+      function tick(now) {
+        if (start === null) start = now;
+        var t = Math.min((now - start) / DURATION, 1);
+        var p = ease(t);
+        var pct = Math.round(p * 100);
+
+        bar.style.transform = 'scaleX(' + p + ')';
+        label.textContent = pct + '%';
+        track.setAttribute('aria-valuenow', pct);
+
+        if (t < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          window.setTimeout(function () {
+            window.location.replace('./?intro-complete=1');
+          }, 250);
+        }
+      }
+
+      requestAnimationFrame(tick);
+    })();
   </script>
 </body>
 </html>
