@@ -2015,64 +2015,72 @@
 
     /* ── PAGE VIEW COUNTER ─────────────────────────────────────── */
 
+
     // (() => {
-    //   const goatCounterCode = 'renukatheminda';
+    //   const code = 'renukatheminda';
+    //   const base = `https://${code}.goatcounter.com`;
     //   const counter = document.getElementById('page-view-counter');
     //   const count = document.getElementById('page-view-count');
 
-    //   const goatCounterUrl = `https://${goatCounterCode}.goatcounter.com`;
+    //   function loadCount() {
+    //     fetch(`${base}/counter/TOTAL.json?t=${Date.now()}`, { cache: 'no-store' })
+    //       .then(r => {
+    //         if (!r.ok) throw new Error(`GoatCounter returned ${r.status}`);
+    //         return r.json();
+    //       })
+    //       .then(data => { count.textContent = data.count_unique; }) // matches dashboard "visits"
+    //       .catch(err => {
+    //         console.error('Unable to load page views:', err);
+    //         count.textContent = 'Unavailable';
+    //       });
+    //   }
+
     //   const tracker = document.createElement('script');
     //   tracker.async = true;
     //   tracker.src = 'https://gc.zgo.at/count.js';
-    //   tracker.dataset.goatcounter = `${goatCounterUrl}/count`;
+    //   tracker.dataset.goatcounter = `${base}/count`;
+    //   tracker.onload = () => setTimeout(loadCount, 1500); // let the hit get recorded first
+    //   tracker.onerror = loadCount;                        // adblock: still show the number
     //   document.head.appendChild(tracker);
     //   counter.hidden = false;
-
-    //   const currentPath = window.location.pathname;
-
-    //   fetch(`${goatCounterUrl}/counter/TOTAL.json?t=${Date.now()}`, { cache: 'no-store' })
-    //     .then(r => {
-    //       if (!r.ok) throw new Error(`GoatCounter returned ${r.status}`);
-    //       return r.json();
-    //     })
-    //     .then(data => {
-    //       if (count) count.textContent = data.count_unique ?? data.count;
-    //     })
-    //     .catch(err => {
-    //       console.error('Unable to load page views:', err);
-    //       if (count) count.textContent = 'Unavailable';
-    //     });
-
     // })();
-
     (() => {
       const code = 'renukatheminda';
       const base = `https://${code}.goatcounter.com`;
       const counter = document.getElementById('page-view-counter');
       const count = document.getElementById('page-view-count');
 
-      function loadCount() {
-        fetch(`${base}/counter/TOTAL.json?t=${Date.now()}`, { cache: 'no-store' })
-          .then(r => {
-            if (!r.ok) throw new Error(`GoatCounter returned ${r.status}`);
-            return r.json();
-          })
-          .then(data => { count.textContent = data.count_unique; }) // matches dashboard "visits"
-          .catch(err => {
-            console.error('Unable to load page views:', err);
-            count.textContent = 'Unavailable';
-          });
+      // Every path that should count toward the total
+      const paths = ['/', '/index.html', '/?intro-complete=1'];
+
+      async function getCount(path) {
+        const url = `${base}/counter/${encodeURIComponent(path)}.json?t=${Date.now()}`;
+        const r = await fetch(url, { cache: 'no-store' });
+        if (!r.ok) return 0; // path with no hits yet returns 404
+        const data = await r.json();
+        return parseInt(String(data.count).replace(/\s/g, ''), 10) || 0;
+      }
+
+      async function loadCount() {
+        try {
+          const counts = await Promise.all(paths.map(getCount));
+          count.textContent = counts.reduce((a, b) => a + b, 0);
+        } catch (err) {
+          console.error('Unable to load page views:', err);
+          count.textContent = 'Unavailable';
+        }
       }
 
       const tracker = document.createElement('script');
       tracker.async = true;
       tracker.src = 'https://gc.zgo.at/count.js';
       tracker.dataset.goatcounter = `${base}/count`;
-      tracker.onload = () => setTimeout(loadCount, 1500); // let the hit get recorded first
-      tracker.onerror = loadCount;                        // adblock: still show the number
+      tracker.onload = () => setTimeout(loadCount, 1500);
+      tracker.onerror = loadCount;
       document.head.appendChild(tracker);
       counter.hidden = false;
     })();
+
 
 
   </script>
