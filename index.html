@@ -2048,7 +2048,7 @@
       //     console.error('Unable to load portfolio page views:', error);
       //     count.textContent = 'Unavailable';
       //   });
-      fetch(`${goatCounterUrl}/counter/TOTAL.json`)
+      fetch(`${goatCounterUrl}/counter/TOTAL.json?t=${Date.now()}`, { cache: 'no-store' })
         .then(r => {
           if (!r.ok) throw new Error(`GoatCounter returned ${r.status}`);
           return r.json();
