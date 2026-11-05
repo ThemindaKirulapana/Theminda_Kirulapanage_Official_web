@@ -116,12 +116,7 @@
   </main>
   <script>
     window.setTimeout(() => {
-      if (window.parent === window) {
-        window.location.replace('index.html');
-        return;
-      }
-
-      window.parent.postMessage({ type: 'portfolio-loading-complete' }, window.location.origin);
+      window.location.replace('./?intro-complete=1');
     }, 2800);
   </script>
 </body>
