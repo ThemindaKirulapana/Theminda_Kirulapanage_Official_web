@@ -1159,6 +1159,12 @@
       color: var(--accent);
     }
 
+    .page-view-counter {
+      margin-bottom: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
     /* ── SCROLL REVEAL ──────────────────────────────────────────── */
     .reveal {
       opacity: 0;
@@ -1345,8 +1351,14 @@
               style="background: linear-gradient(135deg, var(--accent), var(--accent2)); color: #000; font-weight: 700; font-size: 14px; letter-spacing: 0.5px; padding: 14px 28px; border-radius: 50px; text-decoration: none; transition: var(--transition); box-shadow: 0 0 0 0 rgba(13, 175, 48, 0.4);">
               MY GALLERY
             </button>
+            <p class="page-view-counter" id="page-view-counter" aria-live="polite" hidden>
+              Portfolio page views: <span id="page-view-count">Loading…</span>
+            </p>
+
+
 
           </div>
+
         </div>
 
         <div class="hero-visual">
@@ -1826,6 +1838,8 @@
     </div>
     <p>© 2026 Renuka Theminda Kirulapana</p>
     <p style="font-size: 12px; color: rgba(137, 229, 103, 0.5);"> Last updated : 04 November 2026</p>
+
+
     <p style="font-size:12px; color:var(--muted); font-family:monospace;">
       Ray ID: <span id="ray-id">…</span>
     </p>
@@ -1884,7 +1898,7 @@
     }));
 
     /* ── TYPING ──────────────────────────────────────────── */
-    const words = ['A Traveller', 'A Gamer' ,'Full Stack Developer', 'Blogger', 'Bike Rider', 'Motor Car Enthusiast','Web Designer' ];
+    const words = ['A Traveller', 'A Gamer', 'Full Stack Developer', 'Blogger', 'Bike Rider', 'Motor Car Enthusiast', 'Web Designer'];
     let wi = 0, ci = 0, del = false;
     function type() {
       const el = document.getElementById('typing-text');
@@ -1970,6 +1984,43 @@
         btn.disabled = false;
       }
     });
+  </script>
+
+  <script>
+    (() => {
+      const goatCounterCode = 'renukatheminda';
+      const counter = document.getElementById('page-view-counter');
+      const count = document.getElementById('page-view-count');
+
+      const goatCounterUrl = `https://${goatCounterCode}.goatcounter.com`;
+      const tracker = document.createElement('script');
+      tracker.async = true;
+      tracker.src = 'https://gc.zgo.at/count.js';
+      tracker.dataset.goatcounter = `${goatCounterUrl}/count`;
+      document.head.appendChild(tracker);
+      counter.hidden = false;
+
+      const currentPath = window.location.pathname;
+      const pagePath = currentPath === '/' || currentPath.endsWith('/index.html')
+        ? '/'
+        : currentPath;
+      fetch(`${goatCounterUrl}/counter/${encodeURIComponent(pagePath)}.json`)
+        .then(response => {
+          if (!response.ok) throw new Error(`GoatCounter returned ${response.status}`);
+          return response.json();
+        })
+        .then(data => {
+          const pageViews = Number(data.count);
+          if (!Number.isSafeInteger(pageViews) || pageViews < 0) {
+            throw new Error('GoatCounter returned an invalid page-view count');
+          }
+          count.textContent = pageViews.toLocaleString();
+        })
+        .catch(error => {
+          console.error('Unable to load portfolio page views:', error);
+          count.textContent = 'Unavailable';
+        });
+    })();
   </script>
 </body>
 
