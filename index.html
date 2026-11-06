@@ -2061,10 +2061,13 @@
         return parseInt(String(data.count).replace(/\s/g, ''), 10) || 0; // ensure it's a number
       }
 
+      
+
       async function loadCount() {
         try {
           const counts = await Promise.all(paths.map(getCount));
-          count.textContent = counts.reduce((a, b, c) => a + b + c , 0); // sum all counts
+         // console.log('Counts for paths', paths, counts);
+          count.textContent = counts.reduce((a, b) => a + b , 0); // sum all counts
          
         } catch (err) {
           console.error('Unable to load page views:', err);
