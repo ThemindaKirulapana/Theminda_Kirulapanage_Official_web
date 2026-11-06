@@ -2057,14 +2057,15 @@
         const url = `${base}/counter/${encodeURIComponent(path)}.json?t=${Date.now()}`;
         const r = await fetch(url, { cache: 'no-store' });
         if (!r.ok) return 0; // path with no hits yet returns 404
-        const data = await r.json();
-        return parseInt(String(data.count).replace(/\s/g, ''), 10) || 0;
+        const data = await r.json();                                     // matches dashboard "visits"
+        return parseInt(String(data.count).replace(/\s/g, ''), 10) || 0; // ensure it's a number
       }
 
       async function loadCount() {
         try {
           const counts = await Promise.all(paths.map(getCount));
-          count.textContent = counts.reduce((a, b) => a + b, 0);
+          count.textContent = counts.reduce((a, b, c) => a + b + c , 0); // sum all counts
+         
         } catch (err) {
           console.error('Unable to load page views:', err);
           count.textContent = 'Unavailable';
