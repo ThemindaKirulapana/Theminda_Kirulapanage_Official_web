@@ -2015,6 +2015,48 @@
 
     /* ── PAGE VIEW COUNTER ─────────────────────────────────────── */
 
+    (() => {
+  const code = 'renukatheminda';
+  const base = `https://${code}.goatcounter.com`;
+  const counter = document.getElementById('page-view-counter');
+  const count = document.getElementById('page-view-count');
+
+  // Use a NEW token with only "Read statistics" ticked
+  const API_TOKEN = '1o4zuxynxomr31ba3diskr84xg3ftbgsum8xn3gp7lyyehbary';
+
+  async function loadCount() {
+    try {
+      const url = new URL(`${base}/api/v0/stats/total`);
+      //url.searchParams.set('start', '2020-01-01T00:00:00Z');
+      //url.searchParams.set('end', new Date().toISOString());
+
+      const r = await fetch(url, {
+        headers: {
+          Authorization: `Bearer ${API_TOKEN}`,
+          'Content-Type': 'application/json',
+        },
+      });
+      if (!r.ok) throw new Error(`GoatCounter returned ${r.status}`);
+
+      const data = await r.json();
+      console.log('GoatCounter total response:', data); // check this matches your dashboard
+      count.textContent = Number(data.total).toLocaleString();
+    } catch (err) {
+      console.error('Unable to load page views:', err);
+      count.textContent = 'Unavailable';
+    }
+  }
+
+  const tracker = document.createElement('script');
+  tracker.async = true;
+  tracker.src = 'https://gc.zgo.at/count.js';
+  tracker.dataset.goatcounter = `${base}/count`;
+  tracker.onload = () => setTimeout(loadCount, 1500); // let this visit be recorded first
+  tracker.onerror = loadCount;                        // ad blocker: still show the number
+  document.head.appendChild(tracker);
+  counter.hidden = false;
+})();
+     
 
     // (() => {
     //   const code = 'renukatheminda';
@@ -2022,68 +2064,40 @@
     //   const counter = document.getElementById('page-view-counter');
     //   const count = document.getElementById('page-view-count');
 
-    //   function loadCount() {
-    //     fetch(`${base}/counter/TOTAL.json?t=${Date.now()}`, { cache: 'no-store' })
-    //       .then(r => {
-    //         if (!r.ok) throw new Error(`GoatCounter returned ${r.status}`);
-    //         return r.json();
-    //       })
-    //       .then(data => { count.textContent = data.count_unique; }) // matches dashboard "visits"
-    //       .catch(err => {
-    //         console.error('Unable to load page views:', err);
-    //         count.textContent = 'Unavailable';
-    //       });
+    //   // Every path that should count toward the total
+    //   const paths = ['/', '/index.html', '/?intro-complete=1'];
+
+    //   async function getCount(path) {
+    //     const url = `${base}/counter/${encodeURIComponent(path)}.json?t=${Date.now()}`;
+    //     const r = await fetch(url, { cache: 'no-store' });
+    //     if (!r.ok) return 0; // path with no hits yet returns 404
+    //     const data = await r.json();                                     // matches dashboard "visits"
+    //     return parseInt(String(data.count).replace(/\s/g, ''), 10) || 0; // ensure it's a number
+    //   }
+
+      
+
+    //   async function loadCount() {
+    //     try {
+    //       const counts = await Promise.all(paths.map(getCount));
+    //      // console.log('Counts for paths', paths, counts);
+    //       count.textContent = counts.reduce((a, b) => a + b , 0); // sum all counts
+         
+    //     } catch (err) {
+    //       console.error('Unable to load page views:', err);
+    //       count.textContent = 'Unavailable';
+    //     }
     //   }
 
     //   const tracker = document.createElement('script');
     //   tracker.async = true;
     //   tracker.src = 'https://gc.zgo.at/count.js';
     //   tracker.dataset.goatcounter = `${base}/count`;
-    //   tracker.onload = () => setTimeout(loadCount, 1500); // let the hit get recorded first
-    //   tracker.onerror = loadCount;                        // adblock: still show the number
+    //   tracker.onload = () => setTimeout(loadCount, 1500);
+    //   tracker.onerror = loadCount;
     //   document.head.appendChild(tracker);
     //   counter.hidden = false;
     // })();
-    (() => {
-      const code = 'renukatheminda';
-      const base = `https://${code}.goatcounter.com`;
-      const counter = document.getElementById('page-view-counter');
-      const count = document.getElementById('page-view-count');
-
-      // Every path that should count toward the total
-      const paths = ['/', '/index.html', '/?intro-complete=1'];
-
-      async function getCount(path) {
-        const url = `${base}/counter/${encodeURIComponent(path)}.json?t=${Date.now()}`;
-        const r = await fetch(url, { cache: 'no-store' });
-        if (!r.ok) return 0; // path with no hits yet returns 404
-        const data = await r.json();                                     // matches dashboard "visits"
-        return parseInt(String(data.count).replace(/\s/g, ''), 10) || 0; // ensure it's a number
-      }
-
-      
-
-      async function loadCount() {
-        try {
-          const counts = await Promise.all(paths.map(getCount));
-         // console.log('Counts for paths', paths, counts);
-          count.textContent = counts.reduce((a, b) => a + b , 0); // sum all counts
-         
-        } catch (err) {
-          console.error('Unable to load page views:', err);
-          count.textContent = 'Unavailable';
-        }
-      }
-
-      const tracker = document.createElement('script');
-      tracker.async = true;
-      tracker.src = 'https://gc.zgo.at/count.js';
-      tracker.dataset.goatcounter = `${base}/count`;
-      tracker.onload = () => setTimeout(loadCount, 1500);
-      tracker.onerror = loadCount;
-      document.head.appendChild(tracker);
-      counter.hidden = false;
-    })();
 
 
 
